@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LawScout - UK Legal Information</title>
+    <title>LawScout – UK Legal Information</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-```
 <header class="navbar">
     <div class="logo">LawScout</div>
     <nav>
@@ -21,50 +20,22 @@
 </header>
 
 <section class="hero">
-    <h1>UK Legal Information. Case Law. Legislation. Plain English.</h1>
-    <p>Ask a legal question and LawScout will find relevant UK case law and legislation and explain the law in plain English.</p>
-    <p class="disclaimer">General legal information only — not legal advice.</p>
+    <h1>UK Legal Information. Simplified.</h1>
+    <p>Ask a legal question and get clear, structured UK legal information with relevant case law and legislation.</p>
 
-    <div class="search-card">
-        <input id="questionBox" type="text" placeholder="Ask a UK legal question..." />
-        <button onclick="goToAnswer()">Ask LawScout</button>
-    </div>
-</section>
-
-<section class="how-it-works">
-    <h2>How LawScout Works</h2>
-    <div class="steps">
-        <div class="step">
-            <h3>1. Ask a question</h3>
-            <p>Ask a legal question in plain English.</p>
-        </div>
-        <div class="step">
-            <h3>2. We find the law</h3>
-            <p>LawScout searches UK case law and legislation.</p>
-        </div>
-        <div class="step">
-            <h3>3. Get a clear answer</h3>
-            <p>Receive a plain-English explanation with official sources.</p>
-        </div>
-    </div>
-</section>
-
-<footer class="footer">
-    <p>LawScout provides general legal information only and does not provide legal advice.</p>
-    <p>LawScout is not a law firm and is not regulated by the Solicitors Regulation Authority.</p>
-</footer>
-
-<script>
-    function goToAnswer() {
-        var question = document.getElementById("questionBox").value;
-        if (question.trim() !== "") {
-            window.location.href = "answer.html?q=" + encodeURIComponent(question);
-        } else {
-            alert("Please enter a legal question.");
-        }
-    }
-</script>
 ```
+<form class="search-card" action="answer.html" method="GET">
+    <input type="text" name="q" placeholder="e.g. Can my landlord evict me without notice?" required>
+    <button type="submit">Ask LawScout</button>
+</form>
+
+<p class="disclaimer">
+    LawScout provides general legal information for the UK.  
+    It does not provide legal advice and does not create a solicitor–client relationship.
+</p>
+```
+
+</section>
 
 </body>
 </html>

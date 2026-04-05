@@ -20,7 +20,7 @@
 </header>
 
 <main class="answer-container">
-    <h1>Legal Information Result</h1>
+    <h1>Legal Information Report</h1>
 
 ```
 <div class="question-box">
@@ -29,14 +29,20 @@
 </div>
 
 <div class="answer-section">
-    <h2>LawScout Answer</h2>
-    <div id="aiAnswer">Loading answer...</div>
+    <h2>LawScout Report</h2>
+    <div id="aiAnswer">Generating report...</div>
+</div>
+
+<div class="feedback">
+    <p>Was this report helpful?</p>
+    <button>👍 Yes</button>
+    <button>👎 No</button>
 </div>
 
 <div class="disclaimer-box">
     <strong>Disclaimer:</strong>
     LawScout provides general legal information only and does not provide legal advice.
-    You should seek advice from a qualified solicitor for advice on your specific situation.
+    For advice on your specific situation, consult a qualified solicitor.
 </div>
 ```
 
@@ -46,28 +52,19 @@
     const params = new URLSearchParams(window.location.search);
     const question = params.get("q");
 
-    document.getElementById("userQuestion").textContent = question || "No question provided.";
+    document.getElementById("userQuestion").textContent = question;
 
     async function getAnswer() {
-        if (!question) {
-            document.getElementById("aiAnswer").textContent = "No question provided.";
-            return;
-        }
+        const response = await fetch("https://lawscout-backend-production.up.railway.app/ask", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ question: question })
+        });
 
-        try {
-            const response = await fetch("https://lawscout-backend-production.up.railway.app/ask", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ question: question })
-            });
-
-            const data = await response.json();
-            document.getElementById("aiAnswer").innerHTML = data.answer.replace(/\n/g, "<br><br>");
-        } catch (error) {
-            document.getElementById("aiAnswer").textContent = "Error getting response from LawScout.";
-        }
+        const data = await response.json();
+        document.getElementById("aiAnswer").innerHTML = data.answer.replace(/\n/g, "<br><br>");
     }
 
     getAnswer();

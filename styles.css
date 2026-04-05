@@ -174,3 +174,28 @@ border: 2px solid #1a2b4c;
     border-radius: 6px;
     cursor: pointer;
 }
+.login-box {
+background: white;
+padding: 30px;
+border-radius: 10px;
+width: 300px;
+margin: auto;
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+
+.login-box input {
+padding: 12px;
+border: 1px solid #ccc;
+border-radius: 6px;
+}
+
+.login-box button {
+padding: 12px;
+background: #1a2b4c;
+color: white;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+}

@@ -1,12 +1,20 @@
-
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login – LawScout</title>
+    <title>LawScout Login</title>
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C2CPRNNB2H"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-C2CPRNNB2H');
+    </script>
 </head>
 <body>
 
@@ -20,21 +28,13 @@
     </nav>
 </header>
 
-<section class="hero">
+<section class="login">
     <h1>Login to LawScout</h1>
-
-```
-<div class="login-box">
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
-    <button>Login</button>
-
-    <p style="margin-top:15px;">
-        Don't have an account? <a href="register.html">Register</a>
-    </p>
-</div>
-```
-
+    <form>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
 </section>
 
 </body>

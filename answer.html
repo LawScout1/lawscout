@@ -1,143 +1,88 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LawScout — UK legal information in plain English</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LawScout Answer</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="index.html">LawScout</a>
-      <nav>
-        <a href="ask.html">Ask</a>
+
+```
+<header class="navbar">
+    <div class="logo">LawScout</div>
+    <nav>
+        <a href="index.html">Home</a>
         <a href="pricing.html">Pricing</a>
-        <a href="login.html">Sign in</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">UK legal information</span>
-          <h1>Ask a UK legal question and get source-backed legal information</h1>
-          <p class="lead">LawScout finds relevant case law and legislation and explains them in plain English. General legal information only — not legal advice.</p>
-          <form class="search-card" action="answer.html">
-            <label for="q" class="sr-only">Ask a legal question</label>
-            <input id="q" name="q" type="text" value="Can my landlord evict me without notice?" />
-            <button type="submit">Ask LawScout</button>
-          </form>
-          <p class="microcopy">Source-backed answers · UK case law and legislation · Plain English summaries</p>
-        </div>
-        <div class="panel hero-panel">
-          <div class="badge-row">
-            <span class="badge">Case law</span>
-            <span class="badge">Legislation</span>
-            <span class="badge">UK jurisdictions</span>
-          </div>
-          <h3>What users get</h3>
-          <ul class="check-list">
-            <li>Clear legal information in plain English</li>
-            <li>Relevant cases with citations and official links</li>
-            <li>Relevant statutes and sections</li>
-            <li>Optional paid deeper reports</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-heading">
-          <h2>How it works</h2>
-          <p>Designed for people who need a fast, understandable first pass through UK law.</p>
-        </div>
-        <div class="three-up">
-          <div class="panel step">
-            <div class="step-number">1</div>
-            <h3>Ask a question</h3>
-            <p>Type a legal question in normal language.</p>
-          </div>
-          <div class="panel step">
-            <div class="step-number">2</div>
-            <h3>LawScout searches the law</h3>
-            <p>It finds relevant UK case law and legislation.</p>
-          </div>
-          <div class="panel step">
-            <div class="step-number">3</div>
-            <h3>Get a clear answer</h3>
-            <p>You get a plain-English summary with official sources.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt">
-      <div class="container">
-        <div class="section-heading">
-          <h2>Example questions</h2>
-          <p>Use everyday language. LawScout translates it into legal research.</p>
-        </div>
-        <div class="question-grid">
-          <a class="question-card" href="answer.html">Can my employer dismiss me without warning?</a>
-          <a class="question-card" href="answer.html">What makes a contract legally binding in the UK?</a>
-          <a class="question-card" href="answer.html">Can the police search my phone?</a>
-          <a class="question-card" href="answer.html">What rights do tenants have if a landlord enters without permission?</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container split">
-        <div>
-          <h2>Pricing</h2>
-          <p>Start with a free answer, then unlock a more detailed report when you need deeper research.</p>
-        </div>
-        <div class="pricing-grid">
-          <div class="panel pricing-card">
-            <h3>Free answer</h3>
-            <div class="price">£0</div>
-            <ul class="check-list compact">
-              <li>General legal information</li>
-              <li>Key case law</li>
-              <li>Relevant legislation</li>
-            </ul>
-            <a class="button secondary" href="ask.html">Try for free</a>
-          </div>
-          <div class="panel pricing-card featured">
-            <span class="badge">Most useful</span>
-            <h3>Detailed report</h3>
-            <div class="price">£9.99</div>
-            <ul class="check-list compact">
-              <li>Deeper explanation</li>
-              <li>More authorities</li>
-              <li>Downloadable report</li>
-            </ul>
-            <a class="button" href="report.html">See report</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>LawScout</strong>
-        <p>General legal information only. Not legal advice.</p>
-      </div>
-      <div class="footer-links">
-        <a href="pricing.html">Pricing</a>
-        <a href="login.html">Sign in</a>
         <a href="solicitors.html">Solicitors</a>
-      </div>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<main class="answer-container">
+
+    <h1>Legal Information Result</h1>
+
+    <div class="question-box">
+        <h2>Your Question</h2>
+        <p id="userQuestion"></p>
     </div>
-    <div class="container legal-note">
-      LawScout provides general legal information only and does not provide legal advice. LawScout is not a law firm and is not regulated by the Solicitors Regulation Authority.
+
+    <div class="answer-section">
+        <h2>General Legal Information</h2>
+        <p>
+            This section will contain a plain-English explanation of the relevant UK law.
+            LawScout provides general legal information based on legal sources and does not provide legal advice.
+        </p>
     </div>
-  </footer>
+
+    <div class="answer-section">
+        <h2>Relevant Case Law</h2>
+        <div class="case-card">
+            <strong>Example Case Name</strong><br>
+            [2020] EWCA Civ 123<br>
+            Court of Appeal<br><br>
+            <em>Why this case is relevant:</em>
+            This is where a short explanation of the case relevance will go.
+        </div>
+    </div>
+
+    <div class="answer-section">
+        <h2>Relevant Legislation</h2>
+        <div class="law-card">
+            <strong>Example Act – Section 1</strong><br>
+            This section explains the relevant legal rule.
+        </div>
+    </div>
+
+    <div class="answer-section">
+        <h2>Limits and Uncertainty</h2>
+        <p>
+            Legal outcomes depend on the specific facts, evidence, and court procedures.
+            Different rules may apply depending on jurisdiction and the exact circumstances.
+        </p>
+    </div>
+
+    <div class="disclaimer-box">
+        <strong>Disclaimer:</strong>
+        LawScout provides general legal information only and does not provide legal advice.
+        You should seek advice from a qualified solicitor for advice on your specific situation.
+    </div>
+
+</main>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const question = params.get("q");
+
+    if (question) {
+        document.getElementById("userQuestion").textContent = question;
+    } else {
+        document.getElementById("userQuestion").textContent = "No question provided.";
+    }
+</script>
+```
+
 </body>
 </html>

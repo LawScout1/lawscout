@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LawScout Sign in</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">LawScout</a>
+    </div>
+  </header>
+  <main class="container narrow">
+    <section class="panel auth-card">
+      <h1>Sign in to LawScout</h1>
+      <p>Create an account to save reports and access paid research.</p>
+      <form class="auth-form">
+        <label>Email<input type="email" placeholder="you@example.com" /></label>
+        <label>Password<input type="password" placeholder="••••••••" /></label>
+        <button class="button full" type="button">Sign in</button>
+      </form>
+      <p class="microcopy">No account yet? Create one when you unlock your first paid report.</p>
+    </section>
+  </main>
+</body>
+</html>

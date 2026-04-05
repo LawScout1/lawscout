@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask LawScout</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">LawScout</a>
+      <div class="toolbar">
+        <label class="selector-wrap">Jurisdiction
+          <select>
+            <option>UK-wide</option>
+            <option>England & Wales</option>
+            <option>Scotland</option>
+            <option>Northern Ireland</option>
+          </select>
+        </label>
+        <a href="login.html">Sign in</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container app-shell">
+    <aside class="sidebar panel">
+      <button class="button full">New question</button>
+      <div class="sidebar-group">
+        <h3>Recent topics</h3>
+        <a href="answer.html">Landlord eviction</a>
+        <a href="answer.html">Unfair dismissal</a>
+        <a href="answer.html">Police phone search</a>
+      </div>
+      <div class="sidebar-group">
+        <h3>Saved</h3>
+        <a href="report.html">Housing report</a>
+        <a href="report.html">Employment report</a>
+      </div>
+    </aside>
+
+    <section class="chat-area">
+      <div class="panel notice-banner">LawScout provides general legal information only, not legal advice.</div>
+      <div class="message user-message panel">
+        <h4>You asked</h4>
+        <p>Can my landlord evict me without notice?</p>
+      </div>
+      <div class="message assistant-message panel">
+        <h4>LawScout</h4>
+        <p>In general, a landlord’s ability to evict a tenant without notice depends on the type of tenancy, the legal basis for possession, and the procedure required in the relevant UK jurisdiction.</p>
+        <a class="button secondary" href="answer.html">View full answer</a>
+      </div>
+      <form class="chat-input panel" action="answer.html">
+        <input type="text" value="Can my landlord evict me without notice?" />
+        <button type="submit">Ask</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

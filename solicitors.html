@@ -1,55 +1,72 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LawScout Pricing</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Solicitor – LawScout</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="index.html">LawScout</a>
-      <nav>
-        <a href="ask.html">Ask</a>
-        <a href="login.html">Sign in</a>
-      </nav>
-    </div>
-  </header>
-  <main class="container narrow">
-    <section class="section-heading solo">
-      <h1>Pricing</h1>
-      <p>Start free. Upgrade when you need deeper research.</p>
-    </section>
-    <div class="pricing-grid single-row">
-      <div class="panel pricing-card">
-        <h3>Free answer</h3>
-        <div class="price">£0</div>
-        <ul class="check-list compact">
-          <li>Basic legal information</li>
-          <li>Key cases and legislation</li>
-          <li>One answer at a time</li>
-        </ul>
-      </div>
-      <div class="panel pricing-card featured">
-        <h3>Detailed report</h3>
-        <div class="price">£9.99</div>
-        <ul class="check-list compact">
-          <li>Longer explanation</li>
-          <li>More authorities</li>
-          <li>Saved to your account</li>
-        </ul>
-      </div>
-      <div class="panel pricing-card">
-        <h3>Solicitor referral</h3>
-        <div class="price">Later</div>
-        <ul class="check-list compact">
-          <li>Area-based matching</li>
-          <li>Lead form</li>
-          <li>Commission model</li>
-        </ul>
-      </div>
-    </div>
-  </main>
+
+<header class="navbar">
+    <div class="logo">LawScout</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="solicitors.html">Solicitors</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Find a Solicitor</h1>
+    <p>Search for solicitors by legal issue.</p>
+
+```
+<div class="search-card">
+    <input type="text" placeholder="e.g. Family law, Employment, Landlord & Tenant">
+    <button>Search</button>
+</div>
+```
+
+</section>
+
+<section class="solicitor-container">
+
+```
+<div class="solicitor-card">
+    <h3>Smith & Co Solicitors</h3>
+    <p><strong>Specialist Area:</strong> Family Law</p>
+    <p><strong>Location:</strong> London</p>
+    <p><strong>Consultation:</strong> Free 30 min</p>
+    <button>Request Contact</button>
+</div>
+
+<div class="solicitor-card">
+    <h3>Jones Legal</h3>
+    <p><strong>Specialist Area:</strong> Employment Law</p>
+    <p><strong>Location:</strong> Manchester</p>
+    <p><strong>Consultation:</strong> £50</p>
+    <button>Request Contact</button>
+</div>
+
+<div class="solicitor-card">
+    <h3>Greenfield Law</h3>
+    <p><strong>Specialist Area:</strong> Landlord & Tenant</p>
+    <p><strong>Location:</strong> Birmingham</p>
+    <p><strong>Consultation:</strong> Free</p>
+    <button>Request Contact</button>
+</div>
+```
+
+</section>
+
+<section style="text-align:center; padding:40px;">
+    <h2>Are You a Solicitor?</h2>
+    <p>Join LawScout and receive new client enquiries.</p>
+    <button>Join Solicitor Network</button>
+</section>
+
 </body>
 </html>

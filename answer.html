@@ -64,7 +64,7 @@
             });
 
             const data = await response.json();
-            document.getElementById("aiAnswer").textContent = data.answer;
+            document.getElementById("aiAnswer").innerHTML = data.answer.replace(/\n/g, "<br><br>");
         } catch (error) {
             document.getElementById("aiAnswer").textContent = "Error getting response from LawScout.";
         }

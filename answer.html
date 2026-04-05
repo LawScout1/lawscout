@@ -1,56 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LawScout Answer</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-</head>
-<body>
-
-<header class="navbar">
-    <div class="logo">LawScout</div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="solicitors.html">Solicitors</a>
-        <a href="login.html">Login</a>
-    </nav>
-</header>
-
-<main class="answer-container">
-    <div id="reportContent">
-        <h1>Legal Information Report</h1>
-
-        <div class="question-box">
-            <h2>Your Question</h2>
-            <p id="userQuestion"></p>
-        </div>
-
-        <div class="answer-section">
-            <h2>LawScout Report</h2>
-            <div id="aiAnswer">Generating report...</div>
-        </div>
-
-        <div class="disclaimer-box">
-            <strong>Disclaimer:</strong>
-            LawScout provides general legal information only and does not provide legal advice.
-            For advice on your specific situation, consult a qualified solicitor.
-        </div>
-    </div>
-
-    <div class="feedback">
-        <p>Was this report helpful?</p>
-        <button>👍 Yes</button>
-        <button>👎 No</button>
-    </div>
-
-    <div class="pdf-actions">
-        <button onclick="downloadPDF()">Download PDF Report</button>
-    </div>
-</main>
-
 <script>
     const params = new URLSearchParams(window.location.search);
     const question = params.get("q");
@@ -63,6 +10,13 @@
             return;
         }
 
+        if (typeof gtag === "function") {
+            gtag('event', 'ask_question', {
+                event_category: 'engagement',
+                event_label: question
+            });
+        }
+
         try {
             const response = await fetch("https://lawscout-backend-production.up.railway.app/ask", {
                 method: "POST",
@@ -73,7 +27,8 @@
             });
 
             const data = await response.json();
-            document.getElementById("aiAnswer").innerHTML = (data.answer || "No answer returned.").replace(/\n/g, "<br><br>");
+            document.getElementById("aiAnswer").innerHTML =
+                (data.answer || "No answer returned.").replace(/\n/g, "<br><br>");
         } catch (error) {
             document.getElementById("aiAnswer").textContent = "Error getting response from LawScout.";
         }
@@ -91,10 +46,14 @@
         };
 
         html2pdf().set(options).from(element).save();
+
+        if (typeof gtag === "function") {
+            gtag('event', 'download_pdf', {
+                event_category: 'engagement',
+                event_label: question || 'unknown_question'
+            });
+        }
     }
 
     getAnswer();
 </script>
-
-</body>
-</html>

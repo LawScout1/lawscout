@@ -1,6 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LawScout Answer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C2CPRNNB2H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-C2CPRNNB2H');
+    </script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">LawScout</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="solicitors.html">Solicitors</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<main class="answer-container">
+    <div id="reportContent">
+        <h1>Legal Information Report</h1>
+
+        <div class="question-box">
+            <h2>Your Question</h2>
+            <p id="userQuestion">Loading...</p>
+        </div>
+
+        <div class="answer-section">
+            <h2>LawScout Report</h2>
+            <div id="aiAnswer">Generating report...</div>
+        </div>
+
+        <div class="disclaimer-box">
+            <strong>Disclaimer:</strong>
+            LawScout provides general legal information only and does not provide legal advice. For advice on your specific situation, consult a qualified solicitor.
+        </div>
+    </div>
+
+    <div class="feedback">
+        <p>Was this report helpful?</p>
+        <button>👍 Yes</button>
+        <button>👎 No</button>
+    </div>
+
+    <div class="pdf-actions">
+        <button onclick="handlePDF()">Download PDF Report (£4.99)</button>
+    </div>
+</main>
+
 <script>
     const params = new URLSearchParams(window.location.search);
     const question = params.get("q");
+    const paid = params.get("paid");
 
     document.getElementById("userQuestion").textContent = question || "No question provided.";
 
@@ -34,6 +96,20 @@
         }
     }
 
+    function handlePDF() {
+        if (paid === "true") {
+            downloadPDF();
+        } else {
+            if (typeof gtag === "function") {
+                gtag('event', 'click_buy_pdf', {
+                    event_category: 'engagement',
+                    event_label: question || 'unknown_question'
+                });
+            }
+            window.location.href = "https://buy.stripe.com/8x2aEQ58T21h2WVcsofAc00";  // Replace with your Stripe link
+        }
+    }
+
     function downloadPDF() {
         const element = document.getElementById("reportContent");
 
@@ -57,3 +133,6 @@
 
     getAnswer();
 </script>
+
+</body>
+</html>

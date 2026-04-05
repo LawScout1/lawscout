@@ -1,52 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LawScout – UK Legal Information</title>
     <link rel="stylesheet" href="styles.css">
-</head>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C2CPRNNB2H"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
+      gtag('config', 'G-C2CPRNNB2H');
+    </script>
+</head>
 <body>
 
-    <header class="navbar">
-        <div class="logo">LawScout</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="solicitors.html">Solicitors</a>
-            <a href="login.html">Login</a>
-        </nav>
-    </header>
+<header class="navbar">
+    <div class="logo">LawScout</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="solicitors.html">Solicitors</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
 
-    <section class="hero">
-        <h1>UK Legal Information. Simplified.</h1>
-        <p>Ask a legal question and get clear, structured UK legal information with relevant case law and legislation.</p>
+<section class="hero">
+    <h1>UK Legal Information. Simplified.</h1>
+    <p>Ask a legal question and get clear, structured UK legal information with relevant case law and legislation.</p>
 
-        <!-- Updated form with search functionality -->
-        <form class="search-card" action="answer.html" method="GET" onsubmit="trackQuestion()">
-            <input type="text" name="q" placeholder="e.g. Can my landlord evict me without notice?" required>
-            <button type="submit">Ask LawScout</button>
-        </form>
+    <form class="search-card" action="answer.html">
+        <input type="text" id="questionInput" placeholder="Ask a legal question..." required>
+        <button type="submit">Ask LawScout</button>
+    </form>
 
-        <p class="disclaimer">
-            LawScout provides general legal information for the UK.
-            It does not provide legal advice and does not create a solicitor–client relationship.
-        </p>
-    </section>
-
-    <script>
-        function trackQuestion() {
-            if (typeof gtag === "function") {
-                gtag('event', 'question_submitted', {
-                    event_category: 'engagement',
-                    event_label: 'homepage_question'
-                });
-            }
-        }
-    </script>
+    <p class="disclaimer">
+        LawScout provides general legal information for the UK.  
+        It does not provide legal advice and does not create a solicitor–client relationship.
+    </p>
+</section>
 
 </body>
-
 </html>

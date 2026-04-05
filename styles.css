@@ -1,28 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LawScout Sign in</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="index.html">LawScout</a>
-    </div>
-  </header>
-  <main class="container narrow">
-    <section class="panel auth-card">
-      <h1>Sign in to LawScout</h1>
-      <p>Create an account to save reports and access paid research.</p>
-      <form class="auth-form">
-        <label>Email<input type="email" placeholder="you@example.com" /></label>
-        <label>Password<input type="password" placeholder="••••••••" /></label>
-        <button class="button full" type="button">Sign in</button>
-      </form>
-      <p class="microcopy">No account yet? Create one when you unlock your first paid report.</p>
-    </section>
-  </main>
-</body>
-</html>
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+background-color: #f5f7fb;
+color: #1a1a1a;
+}
+
+.navbar {
+background: #1a2b4c;
+color: white;
+padding: 15px 30px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.navbar a {
+color: white;
+margin-left: 20px;
+text-decoration: none;
+}
+
+.hero {
+text-align: center;
+padding: 80px 20px;
+}
+
+.search-card {
+margin-top: 20px;
+}
+
+.search-card input {
+padding: 15px;
+width: 60%;
+max-width: 500px;
+border: 1px solid #ccc;
+border-radius: 6px;
+}
+
+.search-card button {
+padding: 15px 20px;
+background: #1a2b4c;
+color: white;
+border: none;
+border-radius: 6px;
+margin-left: 10px;
+cursor: pointer;
+}
+
+.disclaimer {
+font-size: 13px;
+margin-top: 20px;
+color: #555;
+}
+
+.answer-container {
+max-width: 900px;
+margin: auto;
+padding: 40px 20px;
+}
+
+.question-box {
+background: #fff;
+padding: 20px;
+border-radius: 8px;
+margin-bottom: 20px;
+}
+
+.answer-section {
+background: #ffffff;
+padding: 25px;
+border-radius: 8px;
+line-height: 1.6;
+}
+
+.disclaimer-box {
+background: #f0f0f0;
+padding: 15px;
+border-left: 4px solid #1a2b4c;
+margin-top: 30px;
+font-size: 14px;
+}
+
+.feedback {
+margin-top: 20px;
+}

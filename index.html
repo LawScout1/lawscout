@@ -1,47 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LawScout – UK Legal Information</title>
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C2CPRNNB2H"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-C2CPRNNB2H');
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LawScout - UK Legal Information</title>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-
-<header class="navbar">
+  <header class="navbar">
     <div class="logo">LawScout</div>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="solicitors.html">Solicitors</a>
-        <a href="login.html">Login</a>
+      <a href="./index.html">Home</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./solicitors.html">Solicitors</a>
+      <a href="./login.html">Login</a>
     </nav>
-</header>
+  </header>
 
-<section class="hero">
+  <main class="hero">
     <h1>UK Legal Information. Simplified.</h1>
-    <p>Ask a legal question and get clear, structured UK legal information with relevant case law and legislation.</p>
+    <p>Ask a legal question and get general UK legal information in plain English.</p>
 
-    <form class="search-card" action="answer.html">
-        <input type="text" id="questionInput" placeholder="Ask a legal question..." required>
-        <button type="submit">Ask LawScout</button>
+    <form class="search-card" action="./answer.html" method="get">
+      <input type="text" name="q" placeholder="e.g. Can my landlord evict me without notice?" required />
+      <button type="submit">Ask LawScout</button>
     </form>
 
     <p class="disclaimer">
-        LawScout provides general legal information for the UK.  
-        It does not provide legal advice and does not create a solicitor–client relationship.
+      LawScout provides general legal information only. It does not provide legal advice.
     </p>
-</section>
-
+  </main>
 </body>
 </html>

@@ -9,7 +9,6 @@
 </head>
 <body>
 
-```
 <header class="navbar">
     <div class="logo">LawScout</div>
     <nav>
@@ -23,21 +22,24 @@
 <main class="answer-container">
     <h1>Legal Information Result</h1>
 
-    <div class="question-box">
-        <h2>Your Question</h2>
-        <p id="userQuestion"></p>
-    </div>
+```
+<div class="question-box">
+    <h2>Your Question</h2>
+    <p id="userQuestion"></p>
+</div>
 
-    <div class="answer-section">
-        <h2>LawScout Answer</h2>
-        <div id="aiAnswer">Loading answer...</div>
-    </div>
+<div class="answer-section">
+    <h2>LawScout Answer</h2>
+    <div id="aiAnswer">Loading answer...</div>
+</div>
 
-    <div class="disclaimer-box">
-        <strong>Disclaimer:</strong>
-        LawScout provides general legal information only and does not provide legal advice.
-        You should seek advice from a qualified solicitor or regulated adviser for advice on your specific situation.
-    </div>
+<div class="disclaimer-box">
+    <strong>Disclaimer:</strong>
+    LawScout provides general legal information only and does not provide legal advice.
+    You should seek advice from a qualified solicitor for advice on your specific situation.
+</div>
+```
+
 </main>
 
 <script>
@@ -62,15 +64,14 @@
             });
 
             const data = await response.json();
-            document.getElementById("aiAnswer").textContent = data.answer || "No answer returned.";
+            document.getElementById("aiAnswer").textContent = data.answer;
         } catch (error) {
-            document.getElementById("aiAnswer").textContent = "There was an error getting the answer.";
+            document.getElementById("aiAnswer").textContent = "Error getting response from LawScout.";
         }
     }
 
     getAnswer();
 </script>
-```
 
 </body>
 </html>

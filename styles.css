@@ -226,3 +226,25 @@ h1, h2, h3 {
     align-items: flex-start;
   }
 }
+.logo-img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  margin-right: auto;
+}
+
+.footer {
+  text-align: center;
+  padding: 40px;
+  background-color: #0b1c2c;
+  color: white;
+  font-size: 14px;
+}
+
+.section.wrap {
+  padding: 60px 40px;
+}

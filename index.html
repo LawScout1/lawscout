@@ -90,33 +90,54 @@
   <!-- PayPal SDK Script -->
   <script src="https://www.paypal.com/sdk/js?client-id=BAAY3vTY5Q25yYVDXU2Y0R_ngE8fZB_JruGfu4fNAi2_Ye0BXc1mh678M29Jt3NwTKDc770z7zf8rguaFg&currency=GBP"></script>
 
+  <!-- Add Your JavaScript Here -->
   <script>
-    // PayPal Button setup
-    paypal.Buttons({
-      createOrder: function(data, actions) {
-        // Create an order with the payment details
-        return actions.order.create({
-          purchase_units: [{
-            amount: {
-              value: '9.99' // Amount for the Premium LawScout Report
-            }
-          }]
-        });
-      },
-      onApprove: function(data, actions) {
-        // Capture the payment after approval
-        return actions.order.capture().then(function(details) {
-          alert('Transaction completed by ' + details.payer.name.given_name);
-          // Redirect to the report page after successful payment
-          window.location.href = "/report.html"; // Redirect after payment completion
-        });
-      },
-      onCancel: function(data) {
-        // Handle canceled payments
-        alert('Payment canceled');
-      }
-    }).render('#paypal-button-container'); // Render the button inside the specified container
+    // Function to handle the question submission
+    document.getElementById("question-form").addEventListener("submit", async (event) => {
+      event.preventDefault(); // Prevent default form submission behavior
+
+      // Get the question entered by the user
+      const question = document.getElementById("user-question").value;
+
+      // Hide the question form
+      document.getElementById("question-form").style.display = "none";
+
+      // Show the answer section
+      const answerContainer = document.getElementById("answer-content");
+      answerContainer.style.display = "block";
+
+      // Display the question entered by the user
+      const displayQuestion = document.getElementById("display-question");
+      displayQuestion.textContent = question;
+
+      // Get the answer from the AI (or mock API)
+      const answer = await fetchAnswer(question);
+
+      // Display the AI-generated answer
+      const answerDetails = document.getElementById("answer-details");
+      answerDetails.innerHTML = `
+        <h3>Legal Principles</h3>
+        <p>${answer.legal_principles}</p>
+
+        <h3>Practical Next Steps</h3>
+        <p>${answer.next_steps}</p>
+
+        <h3>Important Limitation</h3>
+        <p>${answer.limitation}</p>
+      `;
+    });
+
+    // Mock function to simulate an API call for AI-generated answer
+    async function fetchAnswer(question) {
+      // Replace this with your actual AI or backend API logic
+      return {
+        legal_principles: "This is a mock answer for Legal Principles related to 'notice period'.",
+        next_steps: "1. Review your contract, 2. Talk to HR, 3. Seek professional advice.",
+        limitation: "This is general information, not legal advice."
+      };
+    }
   </script>
+
 </body>
 
 </html>

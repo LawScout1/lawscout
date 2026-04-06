@@ -1,8 +1,8 @@
 // /api/create-checkout-session.js
-const stripe = require("stripe")(process.env.sk_test_51TIyVh6hgsweJQDM4vlzEr2U00NWu63EPhLM4SZ9KpuuTEpkH98LdW6i2QSDCZVGH8umGDNMYpl3OAceAZNRMPmj00yJzXgK7P); // Replace with your Stripe secret key
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY); // Use the test secret key
 
 export default async function handler(req, res) {
-  const YOUR_DOMAIN = "https://your-vercel-site.vercel.app"; // Replace with your live Vercel URL
+  const YOUR_DOMAIN = "https://lawscout.co.uk"; // Use your custom domain
 
   try {
     // Create a Stripe Checkout session
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
             product_data: {
               name: "Premium LawScout Report",
             },
-            unit_amount: 999, // Amount in cents (e.g., 999 = $9.99)
+            unit_amount: 999, // Amount in cents (999 = $9.99)
           },
           quantity: 1,
         },

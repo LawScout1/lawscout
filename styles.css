@@ -1,250 +1,102 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f5f7fb;
-  color: #1a1a1a;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LawScout - UK Legal Information</title>
+  <link rel="icon" href="public/favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo-area">
+      <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
+      <div class="logo">LawScout</div>
+    </div>
 
-.navbar {
-  background: #1a2b4c;
-  color: white;
-  padding: 16px 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="report.html">Reports</a>
+      <a href="solicitors.html">Solicitors</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
 
-.navbar nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 18px;
-}
+  <main class="hero">
+    <div class="hero-card">
+      <p class="eyebrow">UK LEGAL INFORMATION IN PLAIN ENGLISH</p>
+      <h1>Ask a legal question and get a structured LawScout report</h1>
+      <p class="subtext">
+        General UK legal information with clear explanations of legal principles, legislation, case law examples, and practical next steps.
+      </p>
 
-.logo {
-  font-weight: bold;
-  font-size: 20px;
-}
+      <form class="search-card" action="answer.html" method="get">
+        <input type="text" name="q" placeholder="e.g. Can my landlord evict me without notice?" required />
+        <button type="submit">Ask LawScout</button>
+      </form>
 
-.wrap {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
+      <p class="disclaimer">
+        LawScout provides general legal information only. It does not provide legal advice and does not create a solicitor-client relationship.
+      </p>
+    </div>
+  </main>
 
-.narrow {
-  max-width: 560px;
-}
+  <section class="section wrap">
+    <h2>Our Mission</h2>
+    <p class="section-text">
+      LawScout’s mission is to make legal information accessible, understandable, and affordable through intelligent technology, while guiding users toward the right professional support when needed.
+    </p>
+  </section>
 
-.hero {
-  padding: 80px 20px;
-}
+  <section class="section wrap">
+    <h2>How LawScout Works</h2>
+    <div class="grid three">
+      <div class="card">
+        <h3>1. Ask a question</h3>
+        <p>Type your legal question in everyday language.</p>
+      </div>
+      <div class="card">
+        <h3>2. Get a structured report</h3>
+        <p>Receive a clear legal information report with practical explanations and signposting.</p>
+      </div>
+      <div class="card">
+        <h3>3. Upgrade when needed</h3>
+        <p>Premium reports, downloadable PDFs, and solicitor referrals can be added as paid features.</p>
+      </div>
+    </div>
+  </section>
 
-.hero-card,
-.card,
-.question-box,
-.answer-section {
-  background: white;
-  border-radius: 12px;
-  padding: 28px;
-  box-shadow: 0 4px 20px rgba(17, 32, 64, 0.06);
-}
+  <section class="section wrap">
+    <h2>Why Use LawScout</h2>
+    <div class="grid two">
+      <div class="card">
+        <h3>Clear and accessible</h3>
+        <p>Legal information should not feel confusing, intimidating, or out of reach.</p>
+      </div>
+      <div class="card">
+        <h3>Built for everyday questions</h3>
+        <p>Whether it is housing, employment, contracts, or consumer rights, LawScout helps users understand the starting point.</p>
+      </div>
+    </div>
+  </section>
 
-.hero-card {
-  max-width: 920px;
-  margin: 0 auto;
-  text-align: center;
-}
+  <footer class="footer">
+    <p>© 2026 LawScout. All rights reserved.</p>
 
-.eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 12px;
-  color: #5b6c8f;
-  margin-bottom: 10px;
-}
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </div>
 
-h1, h2, h3 {
-  color: #112040;
-}
-
-.subtext,
-.muted,
-.disclaimer {
-  color: #56637a;
-}
-
-.search-card {
-  margin: 24px 0 10px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.search-card input,
-.stack-form input,
-.stack-form textarea {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #cfd7e6;
-  border-radius: 8px;
-  box-sizing: border-box;
-}
-
-.search-card input {
-  max-width: 560px;
-}
-
-.search-card button,
-.primary-btn,
-.secondary-btn,
-.feedback button {
-  padding: 14px 18px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.search-card button,
-.primary-btn,
-.feedback button {
-  background: #1a2b4c;
-  color: white;
-}
-
-.secondary-btn {
-  background: #e9eef8;
-  color: #1a2b4c;
-}
-
-.inline {
-  display: inline-block;
-}
-
-.section {
-  padding-bottom: 40px;
-}
-
-.grid {
-  display: grid;
-  gap: 20px;
-}
-
-.grid.two {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.grid.three {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-
-.page-header,
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.answer-container .question-box,
-.answer-container .answer-section {
-  margin-bottom: 20px;
-}
-
-.answer-section {
-  line-height: 1.7;
-}
-
-.feedback {
-  margin: 18px 0;
-}
-
-.disclaimer-box {
-  background: #f0f3f9;
-  border-left: 4px solid #1a2b4c;
-  padding: 16px;
-  border-radius: 8px;
-}
-
-.list {
-  padding-left: 20px;
-  line-height: 1.8;
-}
-
-.price {
-  font-size: 34px;
-  font-weight: bold;
-  margin: 0 0 10px;
-}
-
-.featured {
-  border: 2px solid #1a2b4c;
-}
-
-.payment-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-}
-
-.payment-card {
-  background: #f5f7fb;
-  border: 1px solid #d7deea;
-  border-radius: 10px;
-  padding: 16px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.stack-form {
-  display: grid;
-  gap: 10px;
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-@media (max-width: 700px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .navbar nav a {
-    margin: 0 14px 0 0;
-  }
-
-  .page-header,
-  .section-head {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-.logo-img {
-  height: 40px;
-  margin-right: 10px;
-}
-
-.logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  margin-right: auto;
-}
-
-.footer {
-  text-align: center;
-  padding: 40px;
-  background-color: #0b1c2c;
-  color: white;
-  font-size: 14px;
-}
-
-.section.wrap {
-  padding: 60px 40px;
-}
+    <p class="small">
+      LawScout is not a law firm and does not provide legal advice. LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice.
+    </p>
+  </footer>
+</body>
+</html>

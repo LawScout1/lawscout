@@ -6,38 +6,40 @@
   <title>LawScout - UK Legal Information</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="./public/favicon.ico" />
+  <link rel="icon" href="public/favicon.ico" />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 
-  <!-- Fonts (Premium look) -->
+  <!-- Premium Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header class="navbar">
-    <!-- Logo Image -->
-    <img src="./public/logo.png" class="logo-img" alt="LawScout Logo">
 
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
     <div class="logo">LawScout</div>
     <nav>
-      <a href="./index.html">Home</a>
-      <a href="./pricing.html">Pricing</a>
-      <a href="./report.html">Reports</a>
-      <a href="./solicitors.html">Solicitors</a>
-      <a href="./login.html">Login</a>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="report.html">Reports</a>
+      <a href="solicitors.html">Solicitors</a>
+      <a href="login.html">Login</a>
     </nav>
   </header>
 
+  <!-- HERO -->
   <main class="hero">
     <div class="hero-card">
       <p class="eyebrow">UK legal information in plain English</p>
       <h1>Ask a legal question and get a structured LawScout report</h1>
       <p class="subtext">
-        General UK legal information with a clear layout for legal principles, example case law, legislation, limits and disclaimer.
+        General UK legal information with clear explanations of legal principles, legislation, case law examples, and practical next steps.
       </p>
 
-      <form class="search-card" action="./answer.html" method="get">
+      <form class="search-card" action="answer.html" method="get">
         <input type="text" name="q" placeholder="e.g. Can my landlord evict me without notice?" required />
         <button type="submit">Ask LawScout</button>
       </form>
@@ -48,7 +50,7 @@
     </div>
   </main>
 
-  <!-- Mission Section -->
+  <!-- MISSION -->
   <section class="section wrap">
     <h2>Our Mission</h2>
     <p>
@@ -57,6 +59,7 @@
     </p>
   </section>
 
+  <!-- HOW IT WORKS -->
   <section class="section wrap">
     <h2>How LawScout works</h2>
     <div class="grid three">
@@ -66,16 +69,16 @@
       </div>
       <div class="card">
         <h3>2. Get a structured report</h3>
-        <p>LawScout returns a clean legal information report with headings and a disclaimer.</p>
+        <p>LawScout returns a structured legal information report with clear headings and explanations.</p>
       </div>
       <div class="card">
         <h3>3. Upgrade later</h3>
-        <p>Detailed reports, PDF download and solicitor referrals can sit on top of the free tool.</p>
+        <p>Detailed reports, PDF downloads and solicitor referrals can be added as premium features.</p>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer">
     <p>© 2026 LawScout. All rights reserved.</p>
     <p>
@@ -83,5 +86,6 @@
       LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice.
     </p>
   </footer>
+
 </body>
 </html>

@@ -1,29 +1,15 @@
-export default async function handler(req, res) {
-  const { question } = req.body;
-
-  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+async function fetchAnswer(question) {
+  const response = await fetch("/api/ask", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
+      "Content-Type": "application/json"
     },
-    body: JSON.stringify({
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "system",
-          content: "You are a UK legal information assistant. Provide structured answers with: Issue summary, Legal principles, Relevant legislation, Practical next steps, Important limitation. Do not provide legal advice."
-        },
-        {
-          role: "user",
-          content: question
-        }
-      ]
-    })
+    body: JSON.stringify({ question })
   });
 
   const data = await response.json();
-  const answer = data.choices[0].message.content;
 
-  res.status(200).json({ answer });
+  console.log(data);  // Add this line to log the response data
+
+  return data.answer;
 }

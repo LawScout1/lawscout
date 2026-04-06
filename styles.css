@@ -1,102 +1,299 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LawScout - UK Legal Information</title>
-  <link rel="icon" href="public/favicon.ico" />
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-</head>
-<body>
-  <header class="navbar">
-    <div class="logo-area">
-      <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
-      <div class="logo">LawScout</div>
-    </div>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #f4f6f8;
+  color: #1a2f4d;
+}
 
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="report.html">Reports</a>
-      <a href="solicitors.html">Solicitors</a>
-      <a href="about.html">About</a>
-      <a href="login.html">Login</a>
-    </nav>
-  </header>
+a {
+  text-decoration: none;
+}
 
-  <main class="hero">
-    <div class="hero-card">
-      <p class="eyebrow">UK LEGAL INFORMATION IN PLAIN ENGLISH</p>
-      <h1>Ask a legal question and get a structured LawScout report</h1>
-      <p class="subtext">
-        General UK legal information with clear explanations of legal principles, legislation, case law examples, and practical next steps.
-      </p>
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  background-color: #162d4a;
+}
 
-      <form class="search-card" action="answer.html" method="get">
-        <input type="text" name="q" placeholder="e.g. Can my landlord evict me without notice?" required />
-        <button type="submit">Ask LawScout</button>
-      </form>
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
 
-      <p class="disclaimer">
-        LawScout provides general legal information only. It does not provide legal advice and does not create a solicitor-client relationship.
-      </p>
-    </div>
-  </main>
+.logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
 
-  <section class="section wrap">
-    <h2>Our Mission</h2>
-    <p class="section-text">
-      LawScout’s mission is to make legal information accessible, understandable, and affordable through intelligent technology, while guiding users toward the right professional support when needed.
-    </p>
-  </section>
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: white;
+  line-height: 1;
+}
 
-  <section class="section wrap">
-    <h2>How LawScout Works</h2>
-    <div class="grid three">
-      <div class="card">
-        <h3>1. Ask a question</h3>
-        <p>Type your legal question in everyday language.</p>
-      </div>
-      <div class="card">
-        <h3>2. Get a structured report</h3>
-        <p>Receive a clear legal information report with practical explanations and signposting.</p>
-      </div>
-      <div class="card">
-        <h3>3. Upgrade when needed</h3>
-        <p>Premium reports, downloadable PDFs, and solicitor referrals can be added as paid features.</p>
-      </div>
-    </div>
-  </section>
+nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
 
-  <section class="section wrap">
-    <h2>Why Use LawScout</h2>
-    <div class="grid two">
-      <div class="card">
-        <h3>Clear and accessible</h3>
-        <p>Legal information should not feel confusing, intimidating, or out of reach.</p>
-      </div>
-      <div class="card">
-        <h3>Built for everyday questions</h3>
-        <p>Whether it is housing, employment, contracts, or consumer rights, LawScout helps users understand the starting point.</p>
-      </div>
-    </div>
-  </section>
+nav a {
+  color: white;
+  font-weight: 500;
+}
 
-  <footer class="footer">
-    <p>© 2026 LawScout. All rights reserved.</p>
+nav a:hover,
+.footer-links a:hover {
+  color: #c8a96a;
+}
 
-    <div class="footer-links">
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms</a>
-      <a href="disclaimer.html">Disclaimer</a>
-    </div>
+.hero {
+  padding: 70px 20px 30px;
+}
 
-    <p class="small">
-      LawScout is not a law firm and does not provide legal advice. LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice.
-    </p>
-  </footer>
-</body>
-</html>
+.hero-card {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #f9f9fa;
+  border-radius: 18px;
+  padding: 48px 28px 54px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(10, 20, 40, 0.06);
+}
+
+.eyebrow {
+  letter-spacing: 1.6px;
+  font-size: 13px;
+  color: #5a6e8b;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 58px;
+  line-height: 1.05;
+  margin: 0 auto 22px;
+  max-width: 900px;
+  color: #162d4a;
+}
+
+.subtext {
+  max-width: 860px;
+  margin: 0 auto 34px;
+  font-size: 18px;
+  color: #4a5f7d;
+}
+
+.search-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.search-card input {
+  width: min(700px, 100%);
+  padding: 18px 16px;
+  border: 1px solid #cfd7e3;
+  border-radius: 12px;
+  font-size: 16px;
+  background: white;
+  box-sizing: border-box;
+}
+
+button,
+.primary-btn {
+  background-color: #c8a96a;
+  color: #162d4a;
+  border: none;
+  padding: 15px 28px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.disclaimer {
+  max-width: 860px;
+  margin: 28px auto 0;
+  font-size: 16px;
+  color: #4a5f7d;
+}
+
+.section {
+  padding: 20px 20px 40px;
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  margin-bottom: 16px;
+  color: #162d4a;
+}
+
+.section-text {
+  max-width: 900px;
+  font-size: 18px;
+  color: #4a5f7d;
+  line-height: 1.7;
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.grid.three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid.two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card {
+  background: white;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(10, 20, 40, 0.05);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #162d4a;
+}
+
+.card p {
+  margin: 0;
+  color: #4a5f7d;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 900px;
+  margin: 60px auto;
+  background: white;
+  border-radius: 18px;
+  padding: 42px 28px;
+  box-shadow: 0 8px 24px rgba(10, 20, 40, 0.05);
+}
+
+.page p,
+.page li {
+  color: #4a5f7d;
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+.page ul {
+  padding-left: 20px;
+}
+
+.page-header {
+  margin: 40px 0 20px;
+}
+
+.price {
+  font-size: 36px;
+  font-weight: 600;
+  margin: 10px 0 20px;
+  color: #162d4a;
+}
+
+.list {
+  text-align: left;
+  margin-bottom: 20px;
+  color: #4a5f7d;
+}
+
+.list li {
+  margin-bottom: 8px;
+}
+
+.featured {
+  border: 2px solid #c8a96a;
+}
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.payment-card {
+  background: #f4f6f8;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.muted {
+  color: #6b7c93;
+  font-size: 14px;
+}
+
+.footer {
+  text-align: center;
+  padding: 36px 20px 44px;
+  background-color: #162d4a;
+  color: white;
+  margin-top: 30px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+
+.footer-links a {
+  color: white;
+}
+
+.small {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 14px;
+  color: #d7dfeb;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    gap: 16px;
+    padding: 18px 20px;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 16px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .grid.three,
+  .grid.two,
+  .payment-grid {
+    grid-template-columns: 1fr;
+  }
+}

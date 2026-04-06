@@ -86,6 +86,7 @@ nav a:hover,
   color: var(--gold-2);
 }
 
+/* HERO SECTION */
 .hero {
   padding: 54px 0 24px;
 }
@@ -151,213 +152,67 @@ nav a:hover,
   margin: 0 0 28px;
 }
 
-.search-card {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  max-width: 760px;
+/* Question Form */
+.question-form {
+  background-color: var(--white); /* White background for the question box */
+  border-radius: var(--radius); /* Rounded corners */
+  padding: 20px; /* Padding inside the box */
+  box-shadow: var(--shadow); /* Light shadow for depth */
+  margin-bottom: 30px; /* Space between this box and other content */
 }
 
-.search-card input,
-.input,
-textarea {
-  width: 100%;
-  padding: 18px 18px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: #fff;
-  font: inherit;
-  color: var(--text);
-}
-
-textarea { min-height: 170px; resize: vertical; }
-
-.button-row {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.btn,
-.primary-btn,
-button {
-  border: none;
-  border-radius: 12px;
-  padding: 14px 22px;
-  background: var(--gold);
-  color: var(--navy);
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.btn-secondary {
-  background: var(--navy);
-  color: var(--white);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--navy);
-  border: 1px solid var(--border);
-}
-
-.disclaimer {
-  margin: 14px 0 0;
-  font-size: 0.96rem;
-  color: var(--muted);
-}
-
-.hero-stat {
-  padding: 22px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.hero-stat h3,
-.card h3 {
-  margin: 0 0 10px;
-  font-size: 1.1rem;
-}
-
-.hero-stat p,
-.hero-side p { margin: 0; color: rgba(255,255,255,0.78); line-height: 1.7; }
-
-.section {
-  padding: 28px 0 8px;
-}
-
-.section-head {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 18px;
-}
-
-.section h2,
-.page h2,
-.card h2 {
-  margin: 0 0 12px;
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.75rem, 3vw, 2.35rem);
-  letter-spacing: -0.02em;
-}
-
-.section-text {
-  max-width: 880px;
-  color: var(--muted);
-  line-height: 1.75;
-  font-size: 1.06rem;
-}
-
-.grid {
-  display: grid;
-  gap: 22px;
-}
-.grid.three { grid-template-columns: repeat(3, 1fr); }
-.grid.two { grid-template-columns: repeat(2, 1fr); }
-
-.card {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 28px;
-  box-shadow: var(--shadow);
-}
-
-.card p:last-child { margin-bottom: 0; }
-
-.icon-badge {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: linear-gradient(180deg, rgba(200,169,106,0.18), rgba(17,40,69,0.08));
-  display: grid;
-  place-items: center;
-  color: var(--navy);
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.feature-list,
-.list {
-  padding-left: 18px;
-  margin: 14px 0 22px;
-}
-
-.feature-list li,
-.list li { margin-bottom: 10px; }
-
-.page-wrap {
-  padding: 46px 0;
-}
-
-.page,
-.page-hero,
-.answer-layout {
-  background: var(--white);
-  border-radius: 24px;
-  box-shadow: var(--shadow);
-}
-
-.page,
-.page-hero {
-  padding: 42px 34px;
-}
-
-.page-hero { margin-bottom: 24px; }
-
-.price {
-  font-size: 2.5rem;
-  color: var(--navy);
-  font-weight: 700;
-  margin: 8px 0 4px;
-}
-
-.price-note,
-.muted {
-  color: var(--muted);
-  font-size: 0.96rem;
-}
-
-.featured {
-  border: 2px solid rgba(200,169,106,0.65);
-  position: relative;
-}
-
-.featured::before {
-  content: 'Recommended';
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: var(--navy);
-  color: var(--white);
-  border-radius: 999px;
-  padding: 8px 12px;
-  font-size: 0.82rem;
-  font-weight: 700;
-}
-
-.payment-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-.payment-card {
-  background: #f6f8fb;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 16px;
-  text-align: center;
+/* Styling the label for the question input field */
+.question-label {
+  font-size: 16px;
   font-weight: 600;
+  color: var(--text); /* Text color */
+  margin-bottom: 10px;
 }
 
+/* Style for the input field */
+#user-question {
+  width: 100%;
+  padding: 18px 20px;
+  border: 1px solid var(--border); /* Light border */
+  border-radius: 12px; /* Rounded corners */
+  font-size: 14px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  background-color: #fff; /* White background */
+  color: var(--text);
+  transition: border-color 0.3s ease-in-out; /* Smooth transition on focus */
+}
+
+/* Focus effect on the input field */
+#user-question:focus {
+  border-color: var(--gold); /* Highlight border when focused */
+  outline: none;
+}
+
+/* Styling the 'Ask LawScout' button */
+#question-form button {
+  background-color: var(--gold); /* Golden color for button */
+  color: var(--navy); /* Text color */
+  padding: 14px 24px; /* Adequate padding */
+  border: none;
+  border-radius: 12px; /* Rounded corners */
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%; /* Full width button */
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Hover effect on the button */
+#question-form button:hover {
+  background-color: var(--gold-2); /* Darker gold on hover */
+}
+
+/* PayPal Button Container */
+#paypal-button-container {
+  margin-top: 30px; /* Add some space above the PayPal button */
+}
+
+/* Footer Styles */
 .footer {
   margin-top: 40px;
   background: linear-gradient(180deg, var(--navy) 0%, #0d2037 100%);
@@ -381,84 +236,31 @@ button {
 .footer-links a { color: rgba(255,255,255,0.95); }
 .small { color: rgba(255,255,255,0.78); font-size: 0.95rem; line-height: 1.7; max-width: 920px; margin: 0 auto; }
 
-.form-grid {
-  display: grid;
-  gap: 14px;
-}
-
-.answer-layout {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  overflow: hidden;
-}
-
-.answer-side {
-  background: #f8fafc;
-  border-right: 1px solid var(--border);
+/* Additional Styling for Layouts */
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
   padding: 28px;
+  box-shadow: var(--shadow);
 }
 
-.answer-main { padding: 34px; }
-.answer-block + .answer-block { margin-top: 30px; }
-.answer-block h2 { margin-bottom: 10px; }
-.answer-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(17,40,69,0.08);
-  color: var(--navy);
-  font-size: 0.9rem;
-  font-weight: 700;
+.card p:last-child { margin-bottom: 0; }
+
+.page-wrap {
+  padding: 46px 0;
 }
 
-.table-like {
-  display: grid;
-  gap: 14px;
+.page,
+.page-hero,
+.answer-layout {
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
 }
 
-.table-row {
-  padding: 18px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: #fbfcfe;
+.page,
+.page-hero {
+  padding: 42px 34px;
 }
 
-.login-shell {
-  max-width: 520px;
-  margin: 0 auto;
-}
-
-.center { text-align: center; }
-
-@media (max-width: 980px) {
-  .hero-grid,
-  .answer-layout,
-  .grid.three,
-  .grid.two,
-  .payment-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-copy,
-  .hero-side,
-  .answer-side,
-  .answer-main,
-  .page,
-  .page-hero,
-  .card {
-    padding: 24px;
-  }
-
-  .navbar-inner {
-    flex-direction: column;
-    justify-content: center;
-    padding: 16px 0;
-  }
-
-  nav {
-    justify-content: center;
-    gap: 16px;
-  }
-}
+.page-hero { margin-bottom: 24px; }

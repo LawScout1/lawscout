@@ -1,68 +1,44 @@
-export default async function handler(req, res) {
-  const { question } = req.body;
+// This script listens for the form submission and processes the question
+document.getElementById("question-form").addEventListener("submit", async (event) => {
+  event.preventDefault(); // Prevent the form from submitting the traditional way
 
-  try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: "gpt-4.1-mini",
-        messages: [
-          {
-            role: "system",
-            content: `
-You are LawScout, a UK legal information assistant.
+  // Get the question entered by the user
+  const question = document.getElementById("user-question").value;
 
-Answer the user's question in this EXACT structure:
+  // Hide the question form
+  document.getElementById("question-form").style.display = "none";
 
-Issue Summary:
-[Write 2-3 sentences]
+  // Show the "answer-content" section
+  const answerContainer = document.getElementById("answer-content");
+  answerContainer.style.display = "block";
 
-Legal Principles:
-[Explain the relevant law]
+  // Display the question entered by the user
+  const displayQuestion = document.getElementById("display-question");
+  displayQuestion.textContent = question;
 
-Relevant Legislation:
-[List relevant UK laws]
+  // Get the answer from the AI (or your API backend)
+  const answer = await fetchAnswer(question);
 
-Practical Next Steps:
-[Give practical steps]
+  // Display the AI-generated answer in the answer section
+  const answerDetails = document.getElementById("answer-details");
+  answerDetails.innerHTML = `
+    <h3>Legal Principles</h3>
+    <p>${answer.legal_principles}</p>
 
-Important Limitation:
-[Write a legal disclaimer style limitation]
+    <h3>Practical Next Steps</h3>
+    <p>${answer.next_steps}</p>
 
-Do NOT write anything outside these sections.
-`
-          },
-          { role: "user", content: question }
-        ]
-      })
-    });
+    <h3>Important Limitation</h3>
+    <p>${answer.limitation}</p>
+  `;
+});
 
-    const data = await response.json();
-    const text = data.choices[0].message.content;
-
-    // Split sections
-    const issue = text.split("Issue Summary:")[1]?.split("Legal Principles:")[0]?.trim();
-    const legal = text.split("Legal Principles:")[1]?.split("Relevant Legislation:")[0]?.trim();
-    const legislation = text.split("Relevant Legislation:")[1]?.split("Practical Next Steps:")[0]?.trim();
-    const steps = text.split("Practical Next Steps:")[1]?.split("Important Limitation:")[0]?.trim();
-    const limitation = text.split("Important Limitation:")[1]?.trim();
-
-    res.status(200).json({
-      answer: {
-        issue_summary: issue,
-        legal_principles: legal,
-        legislation: legislation,
-        next_steps: steps,
-        limitation: limitation
-      }
-    });
-
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Something went wrong" });
-  }
+// Mock function to simulate an API call for getting an AI answer
+async function fetchAnswer(question) {
+  // Replace this mock function with your actual API logic
+  return {
+    legal_principles: "This is a mock answer for Legal Principles related to 'notice period'.",
+    next_steps: "1. Review your contract, 2. Talk to HR, 3. Seek professional advice.",
+    limitation: "This is general information, not legal advice."
+  };
 }

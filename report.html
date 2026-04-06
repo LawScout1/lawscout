@@ -11,68 +11,86 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header class="navbar">
-  <div class="container navbar-inner">
-    <a class="logo-area" href="index.html">
-      <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
-      <div class="logo">LawScout</div>
-    </a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="report.html">Reports</a>
-      <a href="solicitors.html">Solicitors</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="login.html">Login</a>
-    </nav>
-  </div>
-</header>
-
-
-<main class="page-wrap">
-  <div class="container">
-    <section class="page-hero center">
-      <p class="eyebrow">REPORTS</p>
-      <h1>Structured legal reports</h1>
-      <p class="section-text" style="margin:0 auto;">This page shows how LawScout can position premium reports as a clearer, more valuable upgrade path.</p>
-    </section>
-    <section class="grid two">
-      <div class="card">
-        <h3>What a report can include</h3>
-        <ul class="feature-list">
-          <li>Issue summary</li>
-          <li>Relevant legal principles</li>
-          <li>Example legislation and authorities</li>
-          <li>Practical limitations and caveats</li>
-          <li>Suggested next steps</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Premium positioning</h3>
-        <p>Reports can become a paid product, downloadable PDF, or the basis for premium subscriber features.</p>
-        <a class="btn" href="pricing.html">See pricing</a>
-      </div>
-    </section>
-  </div>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <p>© 2026 LawScout. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms</a>
-      <a href="disclaimer.html">Disclaimer</a>
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a class="logo-area" href="index.html">
+        <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
+        <div class="logo">LawScout</div>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="report.html">Reports</a>
+        <a href="solicitors.html">Solicitors</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+      </nav>
     </div>
-    <p class="small">
-      LawScout is not a law firm and does not provide legal advice. LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice. If you need advice for a specific matter, speak to a qualified solicitor or regulated legal professional.
-    </p>
-  </div>
-</footer>
+  </header>
 
+  <main class="page-wrap">
+    <div class="container">
+      <section class="page-hero center">
+        <p class="eyebrow">REPORTS</p>
+        <h1>Structured legal reports</h1>
+        <p class="section-text" style="margin:0 auto;">This page shows how LawScout can position premium reports as a clearer, more valuable upgrade path.</p>
+      </section>
+      <section id="premium-report-section">
+        <div class="card">
+          <h3>Thank you for your payment!</h3>
+          <p>Your premium report is ready:</p>
+          <div id="premium-report">
+            <!-- Premium content will be loaded here dynamically -->
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 LawScout. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </div>
+      <p class="small">
+        LawScout is not a law firm and does not provide legal advice. LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice. If you need advice for a specific matter, speak to a qualified solicitor or regulated legal professional.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Retrieve the session ID from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('session_id'); // Get the 'session_id' parameter from the URL
+
+    if (sessionId) {
+      console.log("Session ID: ", sessionId);
+      
+      // Here, you can use the sessionId to fetch more details if needed from your backend or Stripe
+      // For now, we will just show a premium message
+      document.getElementById("premium-report").innerHTML = `
+        <h4>Premium Report Details</h4>
+        <p>This is where the detailed, premium report content will go. You can add more details here like legal principles, next steps, and more...</p>
+        <ul>
+          <li>Legal Principles: Example content based on the question</li>
+          <li>Practical Next Steps: Example content based on the question</li>
+          <li>Relevant Legislation: Example content based on the question</li>
+        </ul>
+      `;
+    } else {
+      // If no session_id is found, show a message
+      document.getElementById("premium-report-section").innerHTML = `
+        <h3>Payment Failed</h3>
+        <p>Your payment was not successful. Please try again.</p>
+      `;
+    }
+  </script>
 </body>
 </html>

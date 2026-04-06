@@ -3,92 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LawScout Answer</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Answer — LawScout</title>
+  <link rel="icon" href="public/favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Header: Contains Navigation -->
-  <header class="navbar">
-    <div class="container navbar-inner">
-      <a href="index.html" class="logo">
-        <img src="public/logo.png" alt="LawScout Logo" class="logo-img">
-        <div class="logo-text">LawScout</div>
-      </a>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="report.html">Reports</a>
-        <a href="solicitors.html">Solicitors</a>
-        <a href="login.html">Login</a>
-      </nav>
-    </div>
-  </header>
+<header class="navbar">
+  <div class="container navbar-inner">
+    <a class="logo-area" href="index.html">
+      <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
+      <div class="logo">LawScout</div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="report.html">Reports</a>
+      <a href="solicitors.html">Solicitors</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- Main Content: AI-generated Answer -->
-  <main>
-    <section class="answer-section">
-      <div class="container">
-        <h1 class="answer-title">Your Legal Answer</h1>
-        
-        <!-- Question Summary -->
-        <div class="answer-card">
-          <h2>Summary of Your Question</h2>
-          <p>Here we summarize your legal question in simple terms.</p>
-          <p><strong>Example Question:</strong> "Can my landlord evict me without notice?"</p>
-        </div>
 
-        <!-- Legal Principles -->
-        <div class="answer-card">
-          <h2>Legal Principles</h2>
-          <ul>
-            <li>The landlord must follow a specific legal process.</li>
-            <li>There are notice periods and court procedures required.</li>
-            <li>Eviction laws vary depending on the tenancy type.</li>
-          </ul>
-        </div>
-
-        <!-- Relevant Laws and Examples -->
-        <div class="answer-card">
-          <h2>Relevant Laws</h2>
-          <p>Relevant legal frameworks and case law examples:</p>
-          <ul>
-            <li>Housing Act 1988 (UK)</li>
-            <li>Case Law: <i>Smith v. Jones</i></li>
-          </ul>
-        </div>
-
-        <!-- Next Steps -->
-        <div class="answer-card">
-          <h2>Next Steps</h2>
-          <ul>
-            <li>Check your tenancy agreement for the eviction clause.</li>
-            <li>Consult a solicitor to ensure your rights are protected.</li>
-            <li>If necessary, file a complaint with the local authorities or go to court.</li>
-          </ul>
-        </div>
-
-        <!-- Premium Report Offer -->
-        <div class="cta-section">
-          <p>Want a more detailed report with PDF download and actionable legal advice?</p>
-          <a href="pricing.html" class="btn btn-primary">Upgrade to Premium Report</a>
-        </div>
+<main class="page-wrap">
+  <div class="container answer-layout">
+    <aside class="answer-side">
+      <p class="eyebrow">REPORT OVERVIEW</p>
+      <div class="answer-pill">General information only</div>
+      <ul class="feature-list">
+        <li>Issue summary</li>
+        <li>Legal principles</li>
+        <li>Relevant legislation</li>
+        <li>Practical next steps</li>
+      </ul>
+      <a class="btn" href="pricing.html">Upgrade to premium</a>
+    </aside>
+    <section class="answer-main">
+      <div class="answer-block">
+        <p class="eyebrow">SAMPLE ANSWER</p>
+        <h1>Landlord eviction example</h1>
+        <p class="lead">In many cases, a landlord in England cannot lawfully evict a tenant without following the correct legal process, which may include notice requirements and, in some situations, a court order.</p>
+      </div>
+      <div class="answer-block">
+        <h2>Legal principles</h2>
+        <p>Whether an eviction is lawful depends on the tenancy type, the reason for possession, the notice served, and whether the landlord has complied with the relevant statutory requirements.</p>
+      </div>
+      <div class="answer-block">
+        <h2>Practical next steps</h2>
+        <p>Check the tenancy agreement, identify the notice served, and review whether the landlord has followed the formal possession route. If the matter is urgent, professional advice may be needed.</p>
+      </div>
+      <div class="answer-block">
+        <h2>Important limitation</h2>
+        <p>This example is general information only and not legal advice. Housing law can depend heavily on facts, jurisdiction, and recent legal changes.</p>
       </div>
     </section>
-  </main>
+  </div>
+</main>
 
-  <!-- Footer: Contains Additional Links -->
-  <footer>
-    <div class="container footer-inner">
-      <p>&copy; 2026 LawScout. All rights reserved.</p>
-      <nav class="footer-nav">
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="disclaimer.html">Disclaimer</a>
-      </nav>
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 LawScout. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
     </div>
-  </footer>
+    <p class="small">
+      LawScout is not a law firm and does not provide legal advice. LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice. If you need advice for a specific matter, speak to a qualified solicitor or regulated legal professional.
+    </p>
+  </div>
+</footer>
 
 </body>
 </html>

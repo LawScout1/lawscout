@@ -1,10 +1,91 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LawScout</title>
-  <link rel="icon" href="public/favicon.ico">
-  <link rel="stylesheet" href="/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>LawScout Answer</title>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
-<body><h1>Answer</h1></body></html>
+<body>
+  <header class="navbar">
+    <div class="logo">LawScout</div>
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./report.html">Reports</a>
+      <a href="./solicitors.html">Solicitors</a>
+      <a href="./login.html">Login</a>
+    </nav>
+  </header>
+
+  <main class="answer-container wrap">
+    <h1>Legal Information Report</h1>
+
+    <div class="question-box">
+      <h2>Your Question</h2>
+      <p id="userQuestion">Loading...</p>
+    </div>
+
+    <div class="answer-section">
+      <div class="section-head">
+        <h2>LawScout Report</h2>
+        <a class="secondary-btn" id="openReportLink" href="./report.html">Open report page</a>
+      </div>
+      <div id="aiAnswer">Generating report...</div>
+    </div>
+
+    <div class="feedback">
+      <p>Was this report helpful?</p>
+      <button type="button">👍 Yes</button>
+      <button type="button">👎 No</button>
+    </div>
+
+    <div class="disclaimer-box">
+      <strong>Disclaimer:</strong>
+      LawScout provides general legal information only and does not provide legal advice.
+      For advice on your specific situation, consult a qualified solicitor or regulated adviser.
+    </div>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const question = params.get("q");
+    const userQuestionEl = document.getElementById("userQuestion");
+    const aiAnswerEl = document.getElementById("aiAnswer");
+    const openReportLink = document.getElementById("openReportLink");
+
+    if (!question || !question.trim()) {
+      userQuestionEl.textContent = "No question provided.";
+      aiAnswerEl.textContent = "Please go back and enter a legal question on the homepage.";
+    } else {
+      userQuestionEl.textContent = question;
+      openReportLink.href = "./report.html?q=" + encodeURIComponent(question);
+
+      async function getAnswer() {
+        try {
+          const response = await fetch("https://lawscout-backend-production.up.railway.app/ask", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ question })
+          });
+
+          if (!response.ok) {
+            throw new Error("Backend returned " + response.status);
+          }
+
+          const data = await response.json();
+          const answer = data.answer || "No answer returned.";
+          aiAnswerEl.innerHTML = answer.replace(/\n/g, "<br><br>");
+          sessionStorage.setItem("lawscout_last_question", question);
+          sessionStorage.setItem("lawscout_last_answer", answer);
+        } catch (error) {
+          aiAnswerEl.textContent = "Error getting response from LawScout.";
+          console.error(error);
+        }
+      }
+
+      getAnswer();
+    }
+  </script>
+</body>
+</html>

@@ -1,10 +1,60 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LawScout</title>
-  <link rel="icon" href="public/favicon.ico">
-  <link rel="stylesheet" href="/styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>LawScout - UK Legal Information</title>
+    <link rel="icon" href="/public/favicon.ico">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./styles.css" />
 </head>
-<body><h1>LawScout</h1><p>Homepage</p></body></html>
+<body>
+  <header class="navbar">
+    <div class="logo">LawScout</div>
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./report.html">Reports</a>
+      <a href="./solicitors.html">Solicitors</a>
+      <a href="./login.html">Login</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <div class="hero-card">
+      <p class="eyebrow">UK legal information in plain English</p>
+      <h1>Ask a legal question and get a structured LawScout report</h1>
+      <p class="subtext">
+        General UK legal information with a clear layout for legal principles, example case law, legislation, limits and disclaimer.
+      </p>
+
+      <form class="search-card" action="./answer.html" method="get">
+        <input type="text" name="q" placeholder="e.g. Can my landlord evict me without notice?" required />
+        <button type="submit">Ask LawScout</button>
+      </form>
+
+      <p class="disclaimer">
+        LawScout provides general legal information only. It does not provide legal advice and does not create a solicitor-client relationship.
+      </p>
+    </div>
+  </main>
+
+  <section class="section wrap">
+    <h2>How LawScout works</h2>
+    <div class="grid three">
+      <div class="card">
+        <h3>1. Ask a question</h3>
+        <p>Type your legal question in everyday language.</p>
+      </div>
+      <div class="card">
+        <h3>2. Get a structured report</h3>
+        <p>LawScout returns a clean legal information report with headings and a disclaimer.</p>
+      </div>
+      <div class="card">
+        <h3>3. Upgrade later</h3>
+        <p>Detailed reports, PDF download and solicitor referrals can sit on top of the free tool.</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

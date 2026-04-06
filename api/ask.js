@@ -1,44 +1,61 @@
-// This script listens for the form submission and processes the question
-document.getElementById("question-form").addEventListener("submit", async (event) => {
-  event.preventDefault(); // Prevent the form from submitting the traditional way
+<script>
+  // Function to handle the question submission
+  document.getElementById("question-form").addEventListener("submit", async (event) => {
+    event.preventDefault();  // Prevent the form from submitting the default way
 
-  // Get the question entered by the user
-  const question = document.getElementById("user-question").value;
+    // Get the question entered by the user
+    const question = document.getElementById("user-question").value;
 
-  // Hide the question form
-  document.getElementById("question-form").style.display = "none";
+    // Hide the question form and show the answer section
+    document.getElementById("question-form").style.display = "none"; // Hide the form
+    const answerContainer = document.getElementById("answer-content");
+    answerContainer.style.display = "block"; // Show the answer section
 
-  // Show the "answer-content" section
-  const answerContainer = document.getElementById("answer-content");
-  answerContainer.style.display = "block";
+    // Display the question entered by the user
+    const displayQuestion = document.getElementById("display-question");
+    displayQuestion.textContent = question;
 
-  // Display the question entered by the user
-  const displayQuestion = document.getElementById("display-question");
-  displayQuestion.textContent = question;
+    // Get the answer from the Vercel API (which forwards to your AI API)
+    const answer = await fetchAnswer(question);
 
-  // Get the answer from the AI (or your API backend)
-  const answer = await fetchAnswer(question);
+    // Display the AI-generated answer in the answer section
+    const answerDetails = document.getElementById("answer-details");
+    answerDetails.innerHTML = `
+      <h3>Legal Principles</h3>
+      <p>${answer.legal_principles}</p>
 
-  // Display the AI-generated answer in the answer section
-  const answerDetails = document.getElementById("answer-details");
-  answerDetails.innerHTML = `
-    <h3>Legal Principles</h3>
-    <p>${answer.legal_principles}</p>
+      <h3>Practical Next Steps</h3>
+      <p>${answer.next_steps}</p>
 
-    <h3>Practical Next Steps</h3>
-    <p>${answer.next_steps}</p>
+      <h3>Important Limitation</h3>
+      <p>${answer.limitation}</p>
+    `;
+  });
 
-    <h3>Important Limitation</h3>
-    <p>${answer.limitation}</p>
-  `;
-});
+  // Function to fetch the answer from your Vercel API route
+  async function fetchAnswer(question) {
+    try {
+      const response = await fetch("/api/ask", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ question }) // Send the question to the API route
+      });
 
-// Mock function to simulate an API call for getting an AI answer
-async function fetchAnswer(question) {
-  // Replace this mock function with your actual API logic
-  return {
-    legal_principles: "This is a mock answer for Legal Principles related to 'notice period'.",
-    next_steps: "1. Review your contract, 2. Talk to HR, 3. Seek professional advice.",
-    limitation: "This is general information, not legal advice."
-  };
-}
+      if (!response.ok) {
+        throw new Error('AI API request failed');
+      }
+
+      const data = await response.json();  // Parse the JSON response
+      return data.answer;  // Assuming the response contains an 'answer' object
+    } catch (error) {
+      console.error('Error fetching AI answer:', error);
+      return {
+        legal_principles: 'Sorry, we could not process your question at this time.',
+        next_steps: 'Please try again later.',
+        limitation: 'This is a generic response, not legal advice.'
+      };
+    }
+  }
+</script>

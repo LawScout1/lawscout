@@ -11,76 +11,125 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header class="navbar">
-  <div class="container navbar-inner">
-    <a class="logo-area" href="index.html">
-      <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
-      <div class="logo">LawScout</div>
-    </a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="report.html">Reports</a>
-      <a href="solicitors.html">Solicitors</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="login.html">Login</a>
-    </nav>
-  </div>
-</header>
-
-
-<main class="page-wrap">
-  <div class="container answer-layout">
-    <aside class="answer-side">
-      <p class="eyebrow">REPORT OVERVIEW</p>
-      <div class="answer-pill">General information only</div>
-      <ul class="feature-list">
-        <li>Issue summary</li>
-        <li>Legal principles</li>
-        <li>Relevant legislation</li>
-        <li>Practical next steps</li>
-      </ul>
-      <a class="btn" href="pricing.html">Upgrade to premium</a>
-    </aside>
-    <section class="answer-main">
-      <div class="answer-block">
-        <p class="eyebrow">SAMPLE ANSWER</p>
-        <h1>Landlord eviction example</h1>
-        <p class="lead">In many cases, a landlord in England cannot lawfully evict a tenant without following the correct legal process, which may include notice requirements and, in some situations, a court order.</p>
-      </div>
-      <div class="answer-block">
-        <h2>Legal principles</h2>
-        <p>Whether an eviction is lawful depends on the tenancy type, the reason for possession, the notice served, and whether the landlord has complied with the relevant statutory requirements.</p>
-      </div>
-      <div class="answer-block">
-        <h2>Practical next steps</h2>
-        <p>Check the tenancy agreement, identify the notice served, and review whether the landlord has followed the formal possession route. If the matter is urgent, professional advice may be needed.</p>
-      </div>
-      <div class="answer-block">
-        <h2>Important limitation</h2>
-        <p>This example is general information only and not legal advice. Housing law can depend heavily on facts, jurisdiction, and recent legal changes.</p>
-      </div>
-    </section>
-  </div>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <p>© 2026 LawScout. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms</a>
-      <a href="disclaimer.html">Disclaimer</a>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a class="logo-area" href="index.html">
+        <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
+        <div class="logo">LawScout</div>
+      </a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="report.html">Reports</a>
+        <a href="solicitors.html">Solicitors</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+      </nav>
     </div>
-    <p class="small">
-      LawScout is not a law firm and does not provide legal advice. LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice. If you need advice for a specific matter, speak to a qualified solicitor or regulated legal professional.
-    </p>
-  </div>
-</footer>
+  </header>
 
+  <main class="page-wrap">
+    <div class="container answer-layout">
+      <!-- Left Side: Quick Overview -->
+      <aside class="answer-side">
+        <p class="eyebrow">REPORT OVERVIEW</p>
+        <div class="answer-pill">General information only</div>
+        <ul class="feature-list">
+          <li>Issue summary</li>
+          <li>Legal principles</li>
+          <li>Relevant legislation</li>
+          <li>Practical next steps</li>
+        </ul>
+        <a class="btn" href="pricing.html">Upgrade to premium</a>
+      </aside>
+      <!-- Right Side: Main Answer -->
+      <section class="answer-main">
+        <!-- Form for user to submit a question -->
+        <div class="question-form">
+          <p>Enter your legal question:</p>
+          <form id="question-form">
+            <input type="text" id="user-question" placeholder="e.g., Can my landlord evict me without notice?" required>
+            <button type="submit" class="btn btn-primary">Ask LawScout</button>
+          </form>
+        </div>
+
+        <!-- Display AI Answer -->
+        <div id="answer-content" style="display:none;">
+          <p class="eyebrow">SAMPLE ANSWER</p>
+          <h1 id="display-question">Your Question Will Appear Here</h1>
+          <p class="lead" id="answer-summary">Your answer will appear here after the API call.</p>
+          <div id="answer-details"></div>
+          <div class="cta-section">
+            <a href="pricing.html" class="btn btn-primary">Upgrade to Premium Report</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 LawScout. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+        <a href="disclaimer.html">Disclaimer</a>
+      </div>
+      <p class="small">
+        LawScout is not a law firm and does not provide legal advice. LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice. If you need advice for a specific matter, speak to a qualified solicitor or regulated legal professional.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    async function fetchAnswer(question) {
+      const response = await fetch("/api/ask", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ question })
+      });
+
+      const data = await response.json();
+      return data.answer;
+    }
+
+    document.getElementById("question-form").addEventListener("submit", async (event) => {
+      event.preventDefault(); // Prevent form submission
+      
+      const question = document.getElementById("user-question").value;
+      const answerContainer = document.getElementById("answer-content");
+      const answerDetails = document.getElementById("answer-details");
+      const displayQuestion = document.getElementById("display-question");
+
+      // Display the question dynamically
+      displayQuestion.textContent = question;
+
+      // Hide the form and show the answer section
+      document.getElementById("question-form").style.display = "none";
+      answerContainer.style.display = "block";
+
+      // Call the AI API to get the answer
+      const answer = await fetchAnswer(question);
+
+      // Display the AI-generated answer
+      answerDetails.innerHTML = `
+        <h3>Legal Principles</h3>
+        <p>${answer.legal_principles}</p>
+
+        <h3>Practical Next Steps</h3>
+        <p>${answer.next_steps}</p>
+
+        <h3>Important Limitation</h3>
+        <p>${answer.limitation}</p>
+      `;
+    });
+  </script>
 </body>
 </html>

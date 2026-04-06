@@ -1,73 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LawScout Report</title>
-  <link rel="stylesheet" href="./styles.css" />
+  <title>LawScout</title>
+  <link rel="icon" href="public/favicon.ico">
+  <link rel="stylesheet" href="/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header class="navbar">
-    <div class="logo">LawScout</div>
-    <nav>
-      <a href="./index.html">Home</a>
-      <a href="./pricing.html">Pricing</a>
-      <a href="./report.html">Reports</a>
-      <a href="./solicitors.html">Solicitors</a>
-      <a href="./login.html">Login</a>
-    </nav>
-  </header>
-
-  <main class="wrap">
-    <div class="page-header">
-      <div>
-        <p class="eyebrow">Detailed report</p>
-        <h1>LawScout PDF Report</h1>
-      </div>
-      <div class="actions">
-  <a class="primary-btn inline" href="https://buy.stripe.com/3cI14g1WHaxNcxvbokfAc01" target="_blank" rel="noopener noreferrer">
-    Unlock premium report
-  </a>
-  <button class="secondary-btn" onclick="window.print()">Download / Save PDF</button>
-</div>
-    </div>
-
-    <div class="card">
-      <h2>Question</h2>
-      <p id="reportQuestion">No question loaded.</p>
-    </div>
-
-    <div class="card">
-      <h2>Report Content</h2>
-      <div id="reportAnswer">Run a question first from the homepage, then return here to save or print the report.</div>
-    </div>
-
-    <div class="card">
-      <h2>Payment methods for premium reports</h2>
-      <div class="payment-grid">
-        <div class="payment-card">Visa</div>
-        <div class="payment-card">Mastercard</div>
-        <div class="payment-card">Apple Pay</div>
-        <div class="payment-card">Google Pay</div>
-      </div>
-      <p class="muted">Secure payment handled by Stripe.</p>
-<a class="primary-btn inline" href="https://buy.stripe.com/3cI14g1WHaxNcxvbokfAc01" target="_blank" rel="noopener noreferrer">
-  Continue to payment
-</a>
-    </div>
-  </main>
-
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const qFromUrl = params.get("q");
-    const savedQuestion = sessionStorage.getItem("lawscout_last_question");
-    const savedAnswer = sessionStorage.getItem("lawscout_last_answer");
-
-    document.getElementById("reportQuestion").textContent = qFromUrl || savedQuestion || "No question loaded.";
-
-    if (savedAnswer) {
-      document.getElementById("reportAnswer").innerHTML = savedAnswer.replace(/\n/g, "<br><br>");
-    }
-  </script>
-</body>
-</html>
+<body><h1>Reports</h1></body></html>

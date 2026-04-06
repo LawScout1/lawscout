@@ -4,26 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LawScout Pricing</title>
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" href="public/favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="navbar">
-    <div class="logo">LawScout</div>
+    <div class="logo-area">
+      <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
+      <div class="logo">LawScout</div>
+    </div>
     <nav>
-      <a href="./index.html">Home</a>
-      <a href="./pricing.html">Pricing</a>
-      <a href="./report.html">Reports</a>
-      <a href="./solicitors.html">Solicitors</a>
-      <a href="./login.html">Login</a>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="report.html">Reports</a>
+      <a href="solicitors.html">Solicitors</a>
+      <a href="about.html">About</a>
+      <a href="login.html">Login</a>
     </nav>
   </header>
 
   <main class="wrap">
     <div class="page-header">
-      <div>
-        <p class="eyebrow">Pricing</p>
-        <h1>Simple starter pricing</h1>
-      </div>
+      <p class="eyebrow">Pricing</p>
+      <h1>Simple, transparent pricing</h1>
+      <p class="section-text">
+        Start for free and only pay when you need a detailed LawScout report.
+      </p>
     </div>
 
     <div class="grid two">
@@ -35,20 +42,20 @@
           <li>Get a structured answer</li>
           <li>Use the answer page</li>
         </ul>
-        <a class="primary-btn inline" href="./index.html">Start free</a>
+        <a class="primary-btn inline" href="index.html">Start free</a>
       </div>
 
       <div class="card featured">
         <h2>Premium report</h2>
         <p class="price">£9.99</p>
         <ul class="list">
-          <li>Detailed report page</li>
-          <li>Download / save as PDF</li>
+          <li>Detailed structured report</li>
+          <li>Download as PDF</li>
           <li>Future premium legal tools</li>
         </ul>
-        <a class="primary-btn inline" href="https://buy.stripe.com/3cI14g1WHaxNcxvbokfAc01" target="_blank" rel="noopener noreferrer">
-  Buy premium report
-</a>
+        <a class="primary-btn inline" href="https://buy.stripe.com/3cI14g1WHaxNcxvbokfAc01" target="_blank">
+          Buy premium report
+        </a>
       </div>
     </div>
 
@@ -60,8 +67,25 @@
         <div class="payment-card">Apple Pay</div>
         <div class="payment-card">Google Pay</div>
       </div>
-      <p class="muted">Payment UI only. Connect Stripe later when you are ready to charge users.</p>
+      <p class="muted">Secure payments powered by Stripe.</p>
     </div>
   </main>
+
+  <footer class="footer">
+    <p>© 2026 LawScout. All rights reserved.</p>
+
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </div>
+
+    <p class="small">
+      LawScout is not a law firm and does not provide legal advice.
+      LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice.
+    </p>
+  </footer>
 </body>
 </html>

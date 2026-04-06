@@ -3,89 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LawScout Answer</title>
-  <link rel="stylesheet" href="./styles.css" />
+  <title>Answer — LawScout</title>
+  <link rel="icon" href="public/favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">LawScout</div>
+<header class="navbar">
+  <div class="container navbar-inner">
+    <a class="logo-area" href="index.html">
+      <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
+      <div class="logo">LawScout</div>
+    </a>
     <nav>
-      <a href="./index.html">Home</a>
-      <a href="./pricing.html">Pricing</a>
-      <a href="./report.html">Reports</a>
-      <a href="./solicitors.html">Solicitors</a>
-      <a href="./login.html">Login</a>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="report.html">Reports</a>
+      <a href="solicitors.html">Solicitors</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main class="answer-container wrap">
-    <h1>Legal Information Report</h1>
 
-    <div class="question-box">
-      <h2>Your Question</h2>
-      <p id="userQuestion">Loading...</p>
-    </div>
-
-    <div class="answer-section">
-      <div class="section-head">
-        <h2>LawScout Report</h2>
-        <a class="secondary-btn" id="openReportLink" href="./report.html">Open report page</a>
+<main class="page-wrap">
+  <div class="container answer-layout">
+    <aside class="answer-side">
+      <p class="eyebrow">REPORT OVERVIEW</p>
+      <div class="answer-pill">General information only</div>
+      <ul class="feature-list">
+        <li>Issue summary</li>
+        <li>Legal principles</li>
+        <li>Relevant legislation</li>
+        <li>Practical next steps</li>
+      </ul>
+      <a class="btn" href="pricing.html">Upgrade to premium</a>
+    </aside>
+    <section class="answer-main">
+      <div class="answer-block">
+        <p class="eyebrow">SAMPLE ANSWER</p>
+        <h1>Landlord eviction example</h1>
+        <p class="lead">In many cases, a landlord in England cannot lawfully evict a tenant without following the correct legal process, which may include notice requirements and, in some situations, a court order.</p>
       </div>
-      <div id="aiAnswer">Generating report...</div>
+      <div class="answer-block">
+        <h2>Legal principles</h2>
+        <p>Whether an eviction is lawful depends on the tenancy type, the reason for possession, the notice served, and whether the landlord has complied with the relevant statutory requirements.</p>
+      </div>
+      <div class="answer-block">
+        <h2>Practical next steps</h2>
+        <p>Check the tenancy agreement, identify the notice served, and review whether the landlord has followed the formal possession route. If the matter is urgent, professional advice may be needed.</p>
+      </div>
+      <div class="answer-block">
+        <h2>Important limitation</h2>
+        <p>This example is general information only and not legal advice. Housing law can depend heavily on facts, jurisdiction, and recent legal changes.</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 LawScout. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
     </div>
+    <p class="small">
+      LawScout is not a law firm and does not provide legal advice. LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice. If you need advice for a specific matter, speak to a qualified solicitor or regulated legal professional.
+    </p>
+  </div>
+</footer>
 
-    <div class="feedback">
-      <p>Was this report helpful?</p>
-      <button type="button">👍 Yes</button>
-      <button type="button">👎 No</button>
-    </div>
-
-    <div class="disclaimer-box">
-      <strong>Disclaimer:</strong>
-      LawScout provides general legal information only and does not provide legal advice.
-      For advice on your specific situation, consult a qualified solicitor or regulated adviser.
-    </div>
-  </main>
-
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const question = params.get("q");
-    const userQuestionEl = document.getElementById("userQuestion");
-    const aiAnswerEl = document.getElementById("aiAnswer");
-    const openReportLink = document.getElementById("openReportLink");
-
-    if (!question || !question.trim()) {
-      userQuestionEl.textContent = "No question provided.";
-      aiAnswerEl.textContent = "Please go back and enter a legal question on the homepage.";
-    } else {
-      userQuestionEl.textContent = question;
-      openReportLink.href = "./report.html?q=" + encodeURIComponent(question);
-
-      async function getAnswer() {
-        try {
-          const response = await fetch("https://lawscout-backend-production.up.railway.app/ask", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ question })
-          });
-
-          if (!response.ok) {
-            throw new Error("Backend returned " + response.status);
-          }
-
-          const data = await response.json();
-          const answer = data.answer || "No answer returned.";
-          aiAnswerEl.innerHTML = answer.replace(/\n/g, "<br><br>");
-          sessionStorage.setItem("lawscout_last_question", question);
-          sessionStorage.setItem("lawscout_last_answer", answer);
-        } catch (error) {
-          aiAnswerEl.textContent = "Error getting response from LawScout.";
-          console.error(error);
-        }
-      }
-
-      getAnswer();
-    }
-  </script>
 </body>
 </html>

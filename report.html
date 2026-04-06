@@ -3,71 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LawScout Report</title>
-  <link rel="stylesheet" href="./styles.css" />
+  <title>Reports — LawScout</title>
+  <link rel="icon" href="public/favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">LawScout</div>
+<header class="navbar">
+  <div class="container navbar-inner">
+    <a class="logo-area" href="index.html">
+      <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
+      <div class="logo">LawScout</div>
+    </a>
     <nav>
-      <a href="./index.html">Home</a>
-      <a href="./pricing.html">Pricing</a>
-      <a href="./report.html">Reports</a>
-      <a href="./solicitors.html">Solicitors</a>
-      <a href="./login.html">Login</a>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="report.html">Reports</a>
+      <a href="solicitors.html">Solicitors</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main class="wrap">
-    <div class="page-header">
-      <div>
-        <p class="eyebrow">Detailed report</p>
-        <h1>LawScout PDF Report</h1>
+
+<main class="page-wrap">
+  <div class="container">
+    <section class="page-hero center">
+      <p class="eyebrow">REPORTS</p>
+      <h1>Structured legal reports</h1>
+      <p class="section-text" style="margin:0 auto;">This page shows how LawScout can position premium reports as a clearer, more valuable upgrade path.</p>
+    </section>
+    <section class="grid two">
+      <div class="card">
+        <h3>What a report can include</h3>
+        <ul class="feature-list">
+          <li>Issue summary</li>
+          <li>Relevant legal principles</li>
+          <li>Example legislation and authorities</li>
+          <li>Practical limitations and caveats</li>
+          <li>Suggested next steps</li>
+        </ul>
       </div>
-      <div class="actions">
-  <a class="primary-btn inline" href="https://buy.stripe.com/3cI14g1WHaxNcxvbokfAc01" target="_blank" rel="noopener noreferrer">
-    Unlock premium report
-  </a>
-  <button class="secondary-btn" onclick="window.print()">Download / Save PDF</button>
-</div>
-    </div>
-
-    <div class="card">
-      <h2>Question</h2>
-      <p id="reportQuestion">No question loaded.</p>
-    </div>
-
-    <div class="card">
-      <h2>Report Content</h2>
-      <div id="reportAnswer">Run a question first from the homepage, then return here to save or print the report.</div>
-    </div>
-
-    <div class="card">
-      <h2>Payment methods for premium reports</h2>
-      <div class="payment-grid">
-        <div class="payment-card">Visa</div>
-        <div class="payment-card">Mastercard</div>
-        <div class="payment-card">Apple Pay</div>
-        <div class="payment-card">Google Pay</div>
+      <div class="card">
+        <h3>Premium positioning</h3>
+        <p>Reports can become a paid product, downloadable PDF, or the basis for premium subscriber features.</p>
+        <a class="btn" href="pricing.html">See pricing</a>
       </div>
-      <p class="muted">Secure payment handled by Stripe.</p>
-<a class="primary-btn inline" href="https://buy.stripe.com/3cI14g1WHaxNcxvbokfAc01" target="_blank" rel="noopener noreferrer">
-  Continue to payment
-</a>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 LawScout. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
     </div>
-  </main>
+    <p class="small">
+      LawScout is not a law firm and does not provide legal advice. LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice. If you need advice for a specific matter, speak to a qualified solicitor or regulated legal professional.
+    </p>
+  </div>
+</footer>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const qFromUrl = params.get("q");
-    const savedQuestion = sessionStorage.getItem("lawscout_last_question");
-    const savedAnswer = sessionStorage.getItem("lawscout_last_answer");
-
-    document.getElementById("reportQuestion").textContent = qFromUrl || savedQuestion || "No question loaded.";
-
-    if (savedAnswer) {
-      document.getElementById("reportAnswer").innerHTML = savedAnswer.replace(/\n/g, "<br><br>");
-    }
-  </script>
 </body>
 </html>

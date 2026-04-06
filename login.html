@@ -3,34 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LawScout Login</title>
-  <link rel="stylesheet" href="./styles.css" />
+  <title>Login — LawScout</title>
+  <link rel="icon" href="public/favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="navbar">
-    <div class="logo">LawScout</div>
+<header class="navbar">
+  <div class="container navbar-inner">
+    <a class="logo-area" href="index.html">
+      <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
+      <div class="logo">LawScout</div>
+    </a>
     <nav>
-      <a href="./index.html">Home</a>
-      <a href="./pricing.html">Pricing</a>
-      <a href="./report.html">Reports</a>
-      <a href="./solicitors.html">Solicitors</a>
-      <a href="./login.html">Login</a>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="report.html">Reports</a>
+      <a href="solicitors.html">Solicitors</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <main class="wrap narrow">
-    <div class="card">
-      <p class="eyebrow">Account</p>
-      <h1>Login</h1>
-      <form class="stack-form">
-        <label>Email</label>
-        <input type="email" placeholder="you@example.com" />
-        <label>Password</label>
-        <input type="password" placeholder="••••••••" />
-        <button type="button" class="primary-btn">Login</button>
+
+<main class="page-wrap">
+  <div class="container">
+    <section class="page login-shell">
+      <p class="eyebrow">ACCOUNT</p>
+      <h1>Login to LawScout</h1>
+      <form class="form-grid">
+        <input class="input" type="email" placeholder="Email address" />
+        <input class="input" type="password" placeholder="Password" />
+        <button type="button">Login</button>
       </form>
-      <p class="muted">Front-end placeholder. User accounts can be connected later with Supabase.</p>
+      <p class="muted">This is a polished placeholder page ready for future authentication.</p>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 LawScout. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
     </div>
-  </main>
+    <p class="small">
+      LawScout is not a law firm and does not provide legal advice. LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice. If you need advice for a specific matter, speak to a qualified solicitor or regulated legal professional.
+    </p>
+  </div>
+</footer>
+
 </body>
 </html>

@@ -44,17 +44,9 @@
         </ul>
         <a class="btn" href="pricing.html">Upgrade to premium</a>
       </aside>
+
       <!-- Right Side: Main Answer -->
       <section class="answer-main">
-        <!-- Form for user to submit a question -->
-        <div class="question-form">
-          <p>Enter your legal question:</p>
-          <form id="question-form">
-            <input type="text" id="user-question" placeholder="e.g., Can my landlord evict me without notice?" required>
-            <button type="submit" class="btn btn-primary">Ask LawScout</button>
-          </form>
-        </div>
-
         <!-- Display AI Answer -->
         <div id="answer-content" style="display:none;">
           <p class="eyebrow">SAMPLE ANSWER</p>
@@ -87,6 +79,18 @@
   </footer>
 
   <script>
+    // Get the question from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const question = urlParams.get('q'); // Get the 'q' parameter from the URL
+
+    // If there's a question, display it and fetch the answer
+    if (question) {
+      document.getElementById("display-question").textContent = decodeURIComponent(question);
+      
+      // Call the API with the question to get the answer
+      fetchAnswer(question);
+    }
+
     async function fetchAnswer(question) {
       const response = await fetch("/api/ask", {
         method: "POST",
@@ -97,29 +101,10 @@
       });
 
       const data = await response.json();
-      return data.answer;
-    }
+      const answer = data.answer;
 
-    document.getElementById("question-form").addEventListener("submit", async (event) => {
-      event.preventDefault(); // Prevent form submission
-      
-      const question = document.getElementById("user-question").value;
-      const answerContainer = document.getElementById("answer-content");
-      const answerDetails = document.getElementById("answer-details");
-      const displayQuestion = document.getElementById("display-question");
-
-      // Display the question dynamically
-      displayQuestion.textContent = question;
-
-      // Hide the form and show the answer section
-      document.getElementById("question-form").style.display = "none";
-      answerContainer.style.display = "block";
-
-      // Call the AI API to get the answer
-      const answer = await fetchAnswer(question);
-
-      // Display the AI-generated answer
-      answerDetails.innerHTML = `
+      // Display the AI-generated answer dynamically
+      document.getElementById("answer-details").innerHTML = `
         <h3>Legal Principles</h3>
         <p>${answer.legal_principles}</p>
 
@@ -129,7 +114,10 @@
         <h3>Important Limitation</h3>
         <p>${answer.limitation}</p>
       `;
-    });
+
+      // Show the answer section
+      document.getElementById("answer-content").style.display = "block";
+    }
   </script>
 </body>
 </html>

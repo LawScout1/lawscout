@@ -1,5 +1,5 @@
 // /api/create-checkout-session.js
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY); // Replace with your Stripe secret key
+const stripe = require("stripe")(process.env.sk_test_51TIyVh6hgsweJQDM4vlzEr2U00NWu63EPhLM4SZ9KpuuTEpkH98LdW6i2QSDCZVGH8umGDNMYpl3OAceAZNRMPmj00yJzXgK7P); // Replace with your Stripe secret key
 
 export default async function handler(req, res) {
   const YOUR_DOMAIN = "https://your-vercel-site.vercel.app"; // Replace with your live Vercel URL

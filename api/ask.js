@@ -1,51 +1,68 @@
-// /api/ask.js
 export default async function handler(req, res) {
   const { question } = req.body;
 
   try {
-    // Call to OpenAI's GPT API to get an answer
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`  // Using your environment variable
+        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
       },
       body: JSON.stringify({
-        model: "gpt-4", // GPT-4 model for better results (or use gpt-3.5-turbo)
+        model: "gpt-4.1-mini",
         messages: [
           {
             role: "system",
-            content: "You are a UK legal information assistant. Provide structured answers with: Issue summary, Legal principles, Relevant legislation, Practical next steps, Important limitation. Do not provide legal advice."
+            content: `
+You are LawScout, a UK legal information assistant.
+
+Answer the user's question in this EXACT structure:
+
+Issue Summary:
+[Write 2-3 sentences]
+
+Legal Principles:
+[Explain the relevant law]
+
+Relevant Legislation:
+[List relevant UK laws]
+
+Practical Next Steps:
+[Give practical steps]
+
+Important Limitation:
+[Write a legal disclaimer style limitation]
+
+Do NOT write anything outside these sections.
+`
           },
-          {
-            role: "user",
-            content: question
-          }
+          { role: "user", content: question }
         ]
       })
     });
 
-    // If the OpenAI API call is successful, extract the response
     const data = await response.json();
-    
-    if (data.choices && data.choices[0]) {
-      const answer = data.choices[0].message.content;
+    const text = data.choices[0].message.content;
 
-      // Return structured response (adjust based on OpenAI's response format)
-      res.status(200).json({
-        answer: {
-          legal_principles: `Legal principles for question: ${answer}`,
-          next_steps: `Suggested steps for question: ${answer}`,
-          limitation: "This is general information only, not legal advice. Housing law can depend heavily on facts, jurisdiction, and recent legal changes."
-        }
-      });
-    } else {
-      // Handle error in case OpenAI API response is not as expected
-      res.status(400).json({ error: "No valid response from OpenAI API" });
-    }
+    // Split sections
+    const issue = text.split("Issue Summary:")[1]?.split("Legal Principles:")[0]?.trim();
+    const legal = text.split("Legal Principles:")[1]?.split("Relevant Legislation:")[0]?.trim();
+    const legislation = text.split("Relevant Legislation:")[1]?.split("Practical Next Steps:")[0]?.trim();
+    const steps = text.split("Practical Next Steps:")[1]?.split("Important Limitation:")[0]?.trim();
+    const limitation = text.split("Important Limitation:")[1]?.trim();
+
+    res.status(200).json({
+      answer: {
+        issue_summary: issue,
+        legal_principles: legal,
+        legislation: legislation,
+        next_steps: steps,
+        limitation: limitation
+      }
+    });
+
   } catch (error) {
-    // Handle any unexpected errors in the API call
-    console.error("Error with OpenAI API request:", error);
-    res.status(500).json({ error: "Internal server error" });
+    console.error(error);
+    res.status(500).json({ error: "Something went wrong" });
   }
 }

@@ -3,18 +3,14 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { orderID } = req.body || {};
-
-  if (!orderID) {
-    return res.status(400).json({ error: "Missing orderID" });
-  }
-
   try {
+    const { returnUrl, cancelUrl } = req.body || {};
+
     const auth = Buffer.from(
       `${process.env.PAYPAL_CLIENT_ID}:${process.env.PAYPAL_CLIENT_SECRET}`
     ).toString("base64");
 
-    const accessTokenRes = await fetch(`${process.env.PAYPAL_BASE_URL}/v1/oauth2/token`, {
+    const tokenRes = await fetch(`${process.env.PAYPAL_BASE_URL}/v1/oauth2/token`, {
       method: "POST",
       headers: {
         Authorization: `Basic ${auth}`,
@@ -23,33 +19,52 @@ export default async function handler(req, res) {
       body: "grant_type=client_credentials",
     });
 
-    const accessTokenData = await accessTokenRes.json();
-    const accessToken = accessTokenData.access_token;
+    const tokenData = await tokenRes.json();
+    const accessToken = tokenData.access_token;
 
     if (!accessToken) {
-      return res.status(500).json({ error: "Failed to get PayPal access token", details: accessTokenData });
+      return res.status(500).json({ error: "Failed to get PayPal access token", details: tokenData });
     }
 
-    const captureRes = await fetch(
-      `${process.env.PAYPAL_BASE_URL}/v2/checkout/orders/${orderID}/capture`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const orderRes = await fetch(`${process.env.PAYPAL_BASE_URL}/v2/checkout/orders`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        intent: "CAPTURE",
+        purchase_units: [
+          {
+            amount: {
+              currency_code: "GBP",
+              value: "9.99",
+            },
+            description: "LawScout Premium Legal Report",
+          },
+        ],
+        application_context: {
+          return_url: returnUrl,
+          cancel_url: cancelUrl,
+          user_action: "PAY_NOW"
+        }
+      }),
+    });
 
-    const captureData = await captureRes.json();
+    const orderData = await orderRes.json();
 
-    if (captureData.status !== "COMPLETED") {
-      return res.status(500).json({ error: "Payment not completed", details: captureData });
+    const approvalUrl = orderData?.links?.find(link => link.rel === "approve")?.href;
+
+    if (!orderData.id || !approvalUrl) {
+      return res.status(500).json({ error: "Failed to create PayPal order", details: orderData });
     }
 
-    return res.status(200).json({ success: true, details: captureData });
+    return res.status(200).json({
+      id: orderData.id,
+      approvalUrl
+    });
   } catch (error) {
-    console.error("PayPal capture error:", error);
-    return res.status(500).json({ error: "Server error capturing PayPal order" });
+    console.error("PayPal create order error:", error);
+    return res.status(500).json({ error: "Server error creating PayPal order" });
   }
 }

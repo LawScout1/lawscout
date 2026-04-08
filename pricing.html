@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — LawScout</title>
+  <link rel="icon" href="public/favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container navbar-inner">
+    <a class="logo-area" href="index.html">
+      <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
+      <div class="logo">LawScout</div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="report.html">Reports</a>
+      <a href="solicitors.html">Solicitors</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page-wrap">
+  <div class="container">
+    <section class="page-hero center">
+      <p class="eyebrow">PRICING</p>
+      <h1>Simple, premium pricing</h1>
+      <p class="section-text" style="margin:0 auto;">Start with free legal questions and upgrade when you want a more detailed, structured LawScout report.</p>
+    </section>
+
+    <section class="grid two">
+      <div class="card">
+        <h2>Free</h2>
+        <p class="price">£0</p>
+        <p class="price-note">Ideal for quick questions and first-step guidance.</p>
+        <ul class="list">
+          <li>Ask legal questions</li>
+          <li>Get a structured answer page</li>
+          <li>Understand the basic issue before paying for more detail</li>
+        </ul>
+        <a class="btn" href="index.html">Start free</a>
+      </div>
+
+      <div class="card featured">
+        <h2>Premium report</h2>
+        <p class="price">£9.99</p>
+        <p class="price-note">A paid upsell designed for better detail and stronger conversion value.</p>
+        <ul class="list">
+          <li>More detailed structured report</li>
+          <li>Premium presentation and future downloadable PDF positioning</li>
+          <li>Prepared for future premium legal tools</li>
+        </ul>
+        <div id="paypal-container-A6VR7W6WDGX5U" class="paypal-wrap"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="card">
+        <h2>Accepted payment methods</h2>
+        <div class="payment-grid">
+          <div class="payment-card">Visa</div>
+          <div class="payment-card">Mastercard</div>
+          <div class="payment-card">PayPal</div>
+          <div class="payment-card">Debit Card</div>
+        </div>
+        <p class="muted">Secure payments powered by PayPal.</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 LawScout. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </div>
+    <p class="small">
+      LawScout is not a law firm and does not provide legal advice. LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice. If you need advice for a specific matter, speak to a qualified solicitor or regulated legal professional.
+    </p>
+  </div>
+</footer>
+
+<script src="https://www.paypal.com/sdk/js?client-id=BAAY3vTY5Q25yYVDXU2Y0R_ngE8fZB_JruGfu4fNAi2_Ye0BXc1mh678M29Jt3NwTKDc770z7zf8rguaFg&components=hosted-buttons&disable-funding=venmo&currency=GBP"></script>
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "A6VR7W6WDGX5U",
+  }).render("#paypal-container-A6VR7W6WDGX5U");
+</script>
+</body>
+</html>

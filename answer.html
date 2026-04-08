@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Answer — LawScout</title>
+  <link rel="icon" href="public/favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container navbar-inner">
+    <a class="logo-area" href="index.html">
+      <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
+      <div class="logo">LawScout</div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="report.html">Reports</a>
+      <a href="solicitors.html">Solicitors</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </div>
+</header>
+
+
+<main class="page-wrap">
+  <div class="container answer-layout">
+    <aside class="answer-side">
+      <p class="eyebrow">REPORT OVERVIEW</p>
+      <div class="answer-pill">General information only</div>
+      <ul class="feature-list">
+        <li>Issue summary</li>
+        <li>Legal principles</li>
+        <li>Relevant legislation</li>
+        <li>Practical next steps</li>
+      </ul>
+      <a class="btn" href="pricing.html">See premium options</a>
+    </aside>
+
+    <section class="answer-main">
+      <div class="loading-card" id="loading-card">Generating your LawScout answer…</div>
+      <div class="error-card" id="error-card">Something went wrong while generating the answer. Please go back and try again.</div>
+
+      <div class="answer-shell" id="answer-shell">
+        <div class="answer-block">
+          <p class="eyebrow">FREE ANSWER</p>
+          <h1 id="display-question">Your question</h1>
+          <p class="lead" id="answer-summary"></p>
+        </div>
+
+        <div class="answer-block">
+          <h2>Legal principles</h2>
+          <p id="legal-principles"></p>
+        </div>
+
+        <div class="answer-block">
+          <h2>Practical next steps</h2>
+          <p id="next-steps"></p>
+        </div>
+
+        <div class="answer-block">
+          <h2>Important limitation</h2>
+          <p id="limitation"></p>
+        </div>
+
+        <div class="upsell-card">
+          <h3>Upgrade to a premium report</h3>
+          <p>Get a more polished premium result and support the platform. Payments are processed securely with PayPal.</p>
+          <div id="paypal-container-A6VR7W6WDGX5U" class="paypal-wrap"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 LawScout. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </div>
+    <p class="small">
+      LawScout is not a law firm and does not provide legal advice. LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice. If you need advice for a specific matter, speak to a qualified solicitor or regulated legal professional.
+    </p>
+  </div>
+</footer>
+
+
+<script src="https://www.paypal.com/sdk/js?client-id=BAAY3vTY5Q25yYVDXU2Y0R_ngE8fZB_JruGfu4fNAi2_Ye0BXc1mh678M29Jt3NwTKDc770z7zf8rguaFg&components=hosted-buttons&disable-funding=venmo&currency=GBP"></script>
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "A6VR7W6WDGX5U",
+  }).render("#paypal-container-A6VR7W6WDGX5U");
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const question = urlParams.get("q");
+
+  const loadingCard = document.getElementById("loading-card");
+  const errorCard = document.getElementById("error-card");
+  const answerShell = document.getElementById("answer-shell");
+
+  async function loadAnswer() {
+    if (!question) {
+      loadingCard.style.display = "none";
+      errorCard.style.display = "block";
+      errorCard.textContent = "No question was found. Please go back and ask a question first.";
+      return;
+    }
+
+    try {
+      document.getElementById("display-question").textContent = decodeURIComponent(question);
+
+      const response = await fetch("/api/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question })
+      });
+
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
+      const data = await response.json();
+      const answer = data.answer || {};
+
+      document.getElementById("answer-summary").textContent = answer.summary || "Here is a general informational overview of your question.";
+      document.getElementById("legal-principles").textContent = answer.legal_principles || "No legal principles were returned.";
+      document.getElementById("next-steps").textContent = answer.next_steps || "No practical next steps were returned.";
+      document.getElementById("limitation").textContent = answer.limitation || "This information is general only and not legal advice.";
+
+      loadingCard.style.display = "none";
+      answerShell.classList.add("is-visible");
+    } catch (err) {
+      loadingCard.style.display = "none";
+      errorCard.style.display = "block";
+    }
+  }
+
+  loadAnswer();
+</script>
+</body>
+</html>

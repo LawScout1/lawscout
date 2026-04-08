@@ -145,7 +145,9 @@
   </div>
 </footer>
 
-<script src="https://www.paypal.com/sdk/js?client-id=BAAY3vTY5Q25yYVDXU2Y0R_ngE8fZB_JruGfu4fNAi2_Ye0BXc1mh678M29Jt3NwTKDc770z7zf8rguaFg&currency=GBP"></script>
+<!-- IMPORTANT: replace YOUR_REAL_PAYPAL_CLIENT_ID with your real sandbox client id -->
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_REAL_PAYPAL_CLIENT_ID&currency=GBP"></script>
+
 <script>
   const params = new URLSearchParams(window.location.search);
   const question = params.get("q") || "Your legal question";
@@ -169,6 +171,7 @@
     } catch (error) {
       document.getElementById("preview-text").textContent =
         "We could not generate your answer right now. Please try again.";
+      console.error(error);
     } finally {
       document.getElementById("loading-side").classList.add("hidden");
     }
@@ -176,6 +179,7 @@
 
   function showPremiumReport() {
     if (!premiumAnswer) return;
+
     document.getElementById("full-legal-principles").textContent = premiumAnswer.legal_principles || "";
     document.getElementById("full-situation").textContent = premiumAnswer.situation || "";
     document.getElementById("full-next-steps").textContent = premiumAnswer.next_steps || "";
@@ -188,19 +192,43 @@
   }
 
   paypal.Buttons({
-    createOrder: function(data, actions) {
-      return actions.order.create({
-        purchase_units: [{ amount: { value: "9.99" } }]
+    createOrder: async function () {
+      const res = await fetch("/api/paypal-create-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" }
       });
+
+      const data = await res.json();
+
+      if (!data.id) {
+        console.error("Create order failed:", data);
+        throw new Error("Could not create PayPal order");
+      }
+
+      return data.id;
     },
-    onApprove: function(data, actions) {
-      return actions.order.capture().then(function() {
-        showPremiumReport();
+
+    onApprove: async function (data) {
+      const res = await fetch("/api/paypal-capture-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ orderID: data.orderID })
       });
+
+      const capture = await res.json();
+
+      if (!capture.success) {
+        console.error("Capture failed:", capture);
+        alert("Payment was approved but could not be completed.");
+        return;
+      }
+
+      showPremiumReport();
     },
-    onError: function(err) {
+
+    onError: function (err) {
+      console.error("PayPal error:", err);
       alert("There was a problem starting PayPal. Please try again.");
-      console.error(err);
     }
   }).render("#paypal-button-container");
 

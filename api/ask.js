@@ -14,34 +14,21 @@ export default async function handler(req, res) {
       method: "POST",
       headers: {
         Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
         model: "gpt-4o-mini",
         messages: [
           {
             role: "system",
-            content: `
-You are a UK legal information assistant.
-
-Return ONLY valid JSON with exactly these keys:
+            content: `You are a UK legal information assistant.
+Return ONLY valid JSON with these keys:
 preview
 legal_principles
 situation
 next_steps
 risks
-limitation
-
-Rules:
-- preview must be 2 short sentences
-- legal_principles must explain the main legal position in plain English
-- situation must explain what this may mean for the user
-- next_steps must give practical actions
-- risks must explain what could go wrong
-- limitation must say this is general legal information only, not legal advice
-- no markdown
-- no extra text outside JSON
-            `.trim()
+limitation`
           },
           {
             role: "user",
@@ -56,15 +43,14 @@ Rules:
     const content = raw?.choices?.[0]?.message?.content || "";
 
     let parsed;
-
     try {
       parsed = JSON.parse(content);
-    } catch (err) {
+    } catch {
       parsed = {
         preview: content || "We could not generate a short summary right now.",
-        legal_principles: content || "The legal position could not be fully generated.",
+        legal_principles: "The legal position could not be fully generated.",
         situation: "Your situation may depend on the exact facts and documents involved.",
-        next_steps: "Gather your documents and consider getting professional advice if the issue is urgent.",
+        next_steps: "Gather your documents and consider professional advice if the issue is urgent.",
         risks: "Acting without checking the details may lead to avoidable mistakes or missed deadlines.",
         limitation: "This is general legal information only and not legal advice."
       };
@@ -73,10 +59,10 @@ Rules:
     return res.status(200).json({
       answer: {
         preview: parsed.preview || "We could not generate a short summary right now.",
-        legal_principles: parsed.legal_principles || "The legal position could not be fully generated.",
-        situation: parsed.situation || "Your situation may depend on the exact facts and documents involved.",
-        next_steps: parsed.next_steps || "Gather your documents and consider getting professional advice if the issue is urgent.",
-        risks: parsed.risks || "Acting without checking the details may lead to avoidable mistakes or missed deadlines.",
+        legal_principles: parsed.legal_principles || "",
+        situation: parsed.situation || "",
+        next_steps: parsed.next_steps || "",
+        risks: parsed.risks || "",
         limitation: parsed.limitation || "This is general legal information only and not legal advice."
       }
     });
@@ -84,11 +70,11 @@ Rules:
     console.error("ASK API ERROR:", error);
     return res.status(500).json({
       answer: {
-        preview: "We could not generate a short summary right now.",
-        legal_principles: "There was a problem generating the answer.",
-        situation: "Please try again in a moment.",
-        next_steps: "Retry your question shortly.",
-        risks: "Temporary system issue.",
+        preview: "We could not generate your answer right now.",
+        legal_principles: "",
+        situation: "",
+        next_steps: "Please try again shortly.",
+        risks: "",
         limitation: "This is general legal information only and not legal advice."
       }
     });

@@ -4,170 +4,79 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Answer — LawScout</title>
+
   <link rel="icon" href="public/favicon.ico" />
   <link rel="stylesheet" href="styles.css" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
 <header class="navbar">
   <div class="container navbar-inner">
     <a class="logo-area" href="index.html">
-      <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
+      <img src="public/logo.png" class="logo-img">
       <div class="logo">LawScout</div>
     </a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="report.html">Reports</a>
-      <a href="solicitors.html">Solicitors</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
   </div>
 </header>
 
 <main class="page-wrap">
   <div class="container answer-layout">
+
     <aside class="answer-side">
       <p class="eyebrow">REPORT OVERVIEW</p>
-      <div class="answer-pill">Free answer + premium unlock</div>
+      <div class="answer-pill">Free + Premium</div>
+
       <ul class="feature-list">
         <li>Issue summary</li>
-        <li>Core legal principles</li>
-        <li>Practical next steps</li>
-        <li>Premium deep-dive unlock</li>
+        <li>Legal principles</li>
+        <li>Next steps</li>
+        <li>Full premium unlock</li>
       </ul>
-      <a class="btn" href="pricing.html">See pricing</a>
-      <p class="status-note" id="loading-side">
-        <span class="loader"></span>Generating your legal report…
-      </p>
+
+      <p id="loading-side">Generating your legal report...</p>
     </aside>
 
     <section class="answer-main">
-      <div class="answer-block">
-        <p class="eyebrow">FREE PREVIEW</p>
-        <h1 id="question-title">Your legal question</h1>
 
-        <div class="preview-card">
-          <div class="preview-highlight">General information only</div>
-          <p id="preview-text">Your answer is being prepared.</p>
+      <h1 id="question-title"></h1>
 
-          <div class="preview-meta">
-            <div class="card-mini">
-              <strong>What you get free</strong>
-              <span>Quick issue summary</span>
-            </div>
-            <div class="card-mini">
-              <strong>Best for</strong>
-              <span>Early-stage clarity</span>
-            </div>
-            <div class="card-mini">
-              <strong>Next step</strong>
-              <span>Unlock full report</span>
-            </div>
-          </div>
-        </div>
+      <div class="preview-card">
+        <p id="preview-text">Loading...</p>
       </div>
 
-      <div class="locked-report" id="locked-report">
-        <div class="locked-inner">
-          <div class="report-grid">
-            <div class="report-card">
-              <h2>Legal principles</h2>
-              <p>This section contains the core rules, duties, thresholds, and legal framework that typically apply to the issue.</p>
-            </div>
-            <div class="report-card">
-              <h2>What this means for you</h2>
-              <p>This section explains how the legal position may affect the user in practical terms based on the type of problem raised.</p>
-            </div>
-            <div class="report-card">
-              <h2>What to do next</h2>
-              <p>This section provides step-by-step actions to take now, including documents to check and urgent actions to avoid delay.</p>
-            </div>
-            <div class="report-card">
-              <h2>Risks and limitations</h2>
-              <p>This section covers uncertainty, common mistakes, urgency factors, and when formal legal advice may be needed.</p>
-            </div>
-            <div class="report-card full-span">
-              <h2>Premium legal-style report</h2>
-              <p>A deeper, cleaner answer designed to feel like a genuine premium report rather than a generic chatbot reply.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="unlock-panel" id="unlock-panel">
-          <h3>Unlock your full legal report for £9.99</h3>
-          <p>Reveal a deeper legal breakdown, practical next steps, risks, and a premium answer tailored to your question.</p>
-
-          <div class="unlock-badges">
-            <span>Detailed legal breakdown</span>
-            <span>Practical next actions</span>
-            <span>Risk warnings</span>
-            <span>Instant unlock</span>
-          </div>
-
-          <div id="paypal-button-container"></div>
-        </div>
+      <div id="locked-report">
+        <h3>Unlock full report (£9.99)</h3>
+        <div id="paypal-button-container"></div>
       </div>
 
-      <div class="premium-report" id="premium-report">
-        <p class="eyebrow">FULL REPORT</p>
+      <div id="premium-report" style="display:none;">
+        <h2>Legal principles</h2>
+        <p id="full-legal-principles"></p>
 
-        <div class="report-grid">
-          <div class="report-card">
-            <h2>Legal principles</h2>
-            <p id="full-legal-principles"></p>
-          </div>
+        <h2>Your situation</h2>
+        <p id="full-situation"></p>
 
-          <div class="report-card">
-            <h2>What this means for you</h2>
-            <p id="full-situation"></p>
-          </div>
+        <h2>Next steps</h2>
+        <p id="full-next-steps"></p>
 
-          <div class="report-card">
-            <h2>What to do next</h2>
-            <p id="full-next-steps"></p>
-          </div>
+        <h2>Risks</h2>
+        <p id="full-risks"></p>
 
-          <div class="report-card">
-            <h2>Risks and watch-outs</h2>
-            <p id="full-risks"></p>
-          </div>
-
-          <div class="report-card full-span">
-            <h2>Important limitation</h2>
-            <p id="full-limitation"></p>
-          </div>
-        </div>
+        <h2>Important</h2>
+        <p id="full-limitation"></p>
       </div>
 
-      <p class="status-note hidden" id="payment-success">
-        Payment confirmed. Your premium report is now unlocked.
-      </p>
     </section>
+
   </div>
 </main>
 
-<footer class="footer">
-  <div class="container">
-    <p>© 2026 LawScout. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms</a>
-      <a href="disclaimer.html">Disclaimer</a>
-    </div>
-    <p class="small">
-      LawScout is not a law firm and does not provide legal advice. LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice. If you need advice for a specific matter, speak to a qualified solicitor or regulated legal professional.
-    </p>
-  </div>
-</footer>
-
-<!-- Replace with your real PayPal sandbox client ID -->
+<!-- ✅ PayPal SDK -->
 <script src="https://www.paypal.com/sdk/js?client-id=EAsqiAIqlhJZq04gZx6OK20zOsAzBXBSYCQQdh7P2RQGr7HIHPjd609S3QROJQmJOeFvPwzI6SwE2QIk&currency=GBP"></script>
 
 <script>
@@ -179,7 +88,7 @@
 
   async function loadAnswer() {
     try {
-      const response = await fetch("/api/ask", {
+      const res = await fetch("/api/ask", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -187,104 +96,83 @@
         body: JSON.stringify({ question })
       });
 
-      if (!response.ok) {
-        throw new Error("Answer API request failed");
+      const data = await res.json();
+      premiumAnswer = data.answer;
+
+      document.getElementById("preview-text").textContent =
+        premiumAnswer?.preview || "Could not generate preview.";
+    } catch (err) {
+      console.error(err);
+      document.getElementById("preview-text").textContent =
+        "Error generating answer.";
+    }
+
+    document.getElementById("loading-side").style.display = "none";
+  }
+
+  function showPremium() {
+    document.getElementById("premium-report").style.display = "block";
+    document.getElementById("locked-report").style.display = "none";
+
+    document.getElementById("full-legal-principles").textContent = premiumAnswer.legal_principles;
+    document.getElementById("full-situation").textContent = premiumAnswer.situation;
+    document.getElementById("full-next-steps").textContent = premiumAnswer.next_steps;
+    document.getElementById("full-risks").textContent = premiumAnswer.risks;
+    document.getElementById("full-limitation").textContent = premiumAnswer.limitation;
+  }
+
+  async function init() {
+    await loadAnswer();
+
+    // wait for paypal
+    let tries = 0;
+    while (!window.paypal && tries < 20) {
+      await new Promise(r => setTimeout(r, 200));
+      tries++;
+    }
+
+    if (!window.paypal) {
+      console.error("PayPal failed to load");
+      return;
+    }
+
+    paypal.Buttons({
+      createOrder: async () => {
+        const res = await fetch("/api/paypal-create-order", {
+          method: "POST"
+        });
+        const data = await res.json();
+        return data.id;
+      },
+
+      onApprove: async (data) => {
+        const res = await fetch("/api/paypal-capture-order", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ orderID: data.orderID })
+        });
+
+        const capture = await res.json();
+
+        if (capture.success) {
+          showPremium();
+        } else {
+          alert("Payment failed");
+        }
+      },
+
+      onError: (err) => {
+        console.error(err);
+        alert("PayPal error");
       }
 
-      const data = await response.json();
-      premiumAnswer = data.answer || null;
-
-      document.getElementById("preview-text").textContent =
-        premiumAnswer?.preview || "A short legal summary could not be generated.";
-    } catch (error) {
-      console.error("LOAD ANSWER ERROR:", error);
-      document.getElementById("preview-text").textContent =
-        "We could not generate your answer right now. Please try again.";
-    } finally {
-      document.getElementById("loading-side").classList.add("hidden");
-    }
+    }).render("#paypal-button-container");
   }
 
-  function showPremiumReport() {
-    if (!premiumAnswer) return;
-
-    document.getElementById("full-legal-principles").textContent =
-      premiumAnswer.legal_principles || "";
-
-    document.getElementById("full-situation").textContent =
-      premiumAnswer.situation || "";
-
-    document.getElementById("full-next-steps").textContent =
-      premiumAnswer.next_steps || "";
-
-    document.getElementById("full-risks").textContent =
-      premiumAnswer.risks || "";
-
-    document.getElementById("full-limitation").textContent =
-      premiumAnswer.limitation || "";
-
-    document.getElementById("locked-report").classList.add("hidden");
-    document.getElementById("premium-report").classList.add("visible");
-    document.getElementById("payment-success").classList.remove("hidden");
-  }
-
-  async function setupPaypal() {
-    try {
-      paypal.Buttons({
-        createOrder: async function () {
-          const res = await fetch("/api/paypal-create-order", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            }
-          });
-
-          const data = await res.json();
-
-          if (!data.id) {
-            console.error("Create order failed:", data);
-            throw new Error("Could not create PayPal order");
-          }
-
-          return data.id;
-        },
-
-        onApprove: async function (data) {
-          const res = await fetch("/api/paypal-capture-order", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ orderID: data.orderID })
-          });
-
-          const capture = await res.json();
-
-          if (!capture.success) {
-            console.error("Capture failed:", capture);
-            alert("Payment was approved but could not be completed.");
-            return;
-          }
-
-          showPremiumReport();
-        },
-
-        onError: function (err) {
-          console.error("PayPal error:", err);
-          alert("There was a problem starting PayPal. Please try again.");
-        }
-      }).render("#paypal-button-container");
-    } catch (err) {
-      console.error("PAYPAL RENDER ERROR:", err);
-    }
-  }
-
-  async function initPage() {
-    await loadAnswer();
-    await setupPaypal();
-  }
-
-  initPage();
+  init();
 </script>
+
 </body>
 </html>

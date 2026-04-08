@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LawScout — Smart Legal Solutions</title>
+  <link rel="icon" href="public/favicon.ico" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="navbar">
+  <div class="container navbar-inner">
+    <a class="logo-area" href="index.html">
+      <img src="public/logo.png" class="logo-img" alt="LawScout Logo">
+      <div class="logo">LawScout</div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="report.html">Reports</a>
+      <a href="solicitors.html">Solicitors</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="hero">
+  <div class="container hero-shell">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">UK LEGAL INFORMATION IN PLAIN ENGLISH</p>
+        <h1>Ask a legal question and get a structured LawScout report</h1>
+        <p class="subtext">A premium legal information platform designed to make legal issues clearer, faster to understand, and easier to act on — without the confusion of traditional legal research.</p>
+
+        <form class="search-card" id="ask-form">
+          <input type="text" id="question-input" name="q" placeholder="e.g. Can my landlord evict me without notice?" required />
+          <div class="button-row">
+            <button type="submit">Ask LawScout</button>
+            <a class="btn btn-ghost" href="pricing.html">View pricing</a>
+          </div>
+        </form>
+
+        <p class="disclaimer">LawScout provides general legal information only. It does not provide legal advice and does not create a solicitor-client relationship.</p>
+      </div>
+
+      <aside class="hero-side">
+        <div class="hero-stat">
+          <h3>Built for clarity</h3>
+          <p>Structured answers with clear headings, practical next steps, key legal principles, and a premium presentation designed to build trust.</p>
+        </div>
+        <div class="hero-stat">
+          <h3>Designed to convert</h3>
+          <p>Users get an instant free preview, then unlock a fuller legal breakdown with risks, actions, and a premium explanation.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<section class="section">
+  <div class="container grid three">
+    <div class="card">
+      <div class="icon-badge">1</div>
+      <h3>Ask in plain English</h3>
+      <p>Type your legal issue exactly as you would ask a solicitor or advisor.</p>
+    </div>
+    <div class="card">
+      <div class="icon-badge">2</div>
+      <h3>Get a free preview</h3>
+      <p>Receive a quick issue summary and legal direction before you decide to upgrade.</p>
+    </div>
+    <div class="card">
+      <div class="icon-badge">3</div>
+      <h3>Unlock the full report</h3>
+      <p>Pay once to reveal a deeper legal breakdown, practical steps, risks, and a premium-style report.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 LawScout. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </div>
+    <p class="small">
+      LawScout is not a law firm and does not provide legal advice. LawScout provides legal information only and should not be relied upon as a substitute for professional legal advice. If you need advice for a specific matter, speak to a qualified solicitor or regulated legal professional.
+    </p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("ask-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const q = document.getElementById("question-input").value.trim();
+    if (!q) return;
+    window.location.href = "answer.html?q=" + encodeURIComponent(q);
+  });
+</script>
+</body>
+</html>
